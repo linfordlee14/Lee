@@ -1,0 +1,2662 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Linford Musiyambodza | Data Analyst • Cybersecurity Enthusiast • Founder</title>
+  <meta name="description"
+    content="Portfolio of Linford Musiyambodza, a Data Analyst, Cybersecurity Enthusiast, and Founder using technology, data, and AI to build solutions for businesses and global challenges." />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
+
+  <!-- Early theme (prevents FOUC) -->
+  <script>
+    (() => {
+      try {
+        const saved = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = saved || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch { }
+    })();
+  </script>
+
+  <!-- Preconnects -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+  <!-- Icons & Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ====================== CASCADE LAYERS ====================== */
+    @layer reset, base, tokens, layout, components, utilities;
+
+    /* ========================== RESET ========================== */
+    @layer reset {
+
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box
+      }
+
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%
+      }
+
+      body {
+        min-height: 100vh;
+        text-rendering: optimizeSpeed;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale
+      }
+
+      img,
+      picture,
+      video,
+      canvas,
+      svg {
+        display: block;
+        max-width: 100%;
+        height: auto
+      }
+
+      input,
+      button,
+      textarea,
+      select {
+        font: inherit
+      }
+
+      p,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        overflow-wrap: break-word
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit
+      }
+
+      ul[role="list"],
+      ol[role="list"] {
+        list-style: none;
+        padding: 0;
+        margin: 0
+      }
+
+      [role="list"]>li::marker {
+        content: ""
+      }
+
+      *:focus-visible {
+        outline: 2px solid rgb(var(--color-accent));
+        outline-offset: 3px;
+        border-radius: var(--radius-sm)
+      }
+
+      @media (prefers-reduced-motion:reduce) {
+
+        *,
+        *::before,
+        *::after {
+          animation-duration: .01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: .01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      /* Prevent page scroll when dialog open */
+      html.no-scroll {
+        overflow: hidden
+      }
+    }
+
+    /* =========================== BASE ========================== */
+    @layer base {
+      :root {
+        color-scheme: light dark;
+        /* Brand */
+        --color-primary: 10 37 64;
+        --color-accent: 0 194 255;
+        --color-secondary: 255 107 53;
+
+        /* Neutrals */
+        --gray-50: 249 250 251;
+        --gray-100: 243 244 246;
+        --gray-200: 229 231 235;
+        --gray-300: 209 213 219;
+        --gray-400: 156 163 175;
+        --gray-500: 107 114 128;
+        --gray-600: 75 85 99;
+        --gray-700: 55 65 81;
+        --gray-800: 31 41 55;
+        --gray-900: 17 24 39;
+        --gray-950: 3 7 18;
+
+        /* Spacing (8px base) */
+        --space-xs: .25rem;
+        --space-sm: .5rem;
+        --space-md: 1rem;
+        --space-lg: 1.5rem;
+        --space-xl: 2rem;
+        --space-2xl: 3rem;
+        --space-3xl: 4rem;
+        --space-4xl: 6rem;
+
+        /* Fluid type */
+        --text-xs: clamp(.75rem, .5vw + .65rem, .8rem);
+        --text-sm: clamp(.875rem, .5vw + .775rem, .95rem);
+        --text-base: clamp(1rem, .5vw + .9rem, 1.1rem);
+        --text-lg: clamp(1.125rem, .5vw + 1.025rem, 1.25rem);
+        --text-xl: clamp(1.25rem, 1vw + 1.05rem, 1.5rem);
+        --text-2xl: clamp(1.5rem, 1.5vw + 1.2rem, 2rem);
+        --text-3xl: clamp(1.875rem, 2.5vw + 1.375rem, 2.5rem);
+        --text-4xl: clamp(2.25rem, 3.5vw + 1.55rem, 3.25rem);
+        --text-5xl: clamp(3rem, 5vw + 2rem, 4rem);
+
+        /* Fonts & leading */
+        --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+        --font-display: 'Plus Jakarta Sans', var(--font-sans);
+        --leading-tight: 1.2;
+        --leading-snug: 1.35;
+        --leading-normal: 1.6;
+        --leading-relaxed: 1.75;
+
+        /* Radii */
+        --radius-sm: .375rem;
+        --radius-md: .5rem;
+        --radius-lg: .75rem;
+        --radius-xl: 1rem;
+        --radius-2xl: 1.5rem;
+        --radius-full: 9999px;
+
+        /* Shadows */
+        --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / .05);
+        --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / .1), 0 1px 2px -1px rgb(0 0 0 / .1);
+        --shadow-md: 0 4px 6px -1px rgb(0 0 0 / .1), 0 2px 4px -2px rgb(0 0 0 / .1);
+        --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / .12), 0 4px 6px -4px rgb(0 0 0 / .12);
+        --shadow-xl: 0 20px 35px -8px rgb(0 0 0 / .22), 0 8px 16px -8px rgb(0 0 0 / .18);
+        --shadow-2xl: 0 30px 65px -20px rgb(0 0 0 / .35);
+        --shadow-card: var(--shadow-sm);
+
+        /* Motion */
+        --duration-fast: 150ms;
+        --duration-normal: 250ms;
+        --duration-slow: 400ms;
+        --ease-out: cubic-bezier(0, 0, .2, 1);
+        --ease-in-out: cubic-bezier(.4, 0, .2, 1);
+
+        /* Z */
+        --z-base: 0;
+        --z-sticky: 100;
+        --z-overlay: 200;
+        --z-modal: 300;
+        --z-tooltip: 400;
+
+        --container-max-width: 80rem;
+      }
+
+      [data-theme="dark"] {
+        --gray-50: 3 7 18;
+        --gray-100: 17 24 39;
+        --gray-200: 31 41 55;
+        --gray-300: 55 65 81;
+        --gray-400: 75 85 99;
+        --gray-500: 107 114 128;
+        --gray-600: 156 163 175;
+        --gray-700: 209 213 219;
+        --gray-800: 229 231 235;
+        --gray-900: 243 244 246;
+        --gray-950: 249 250 251;
+        --shadow-card: 0 0 0 1px rgb(var(--gray-700)), 0 10px 40px rgb(0 0 0 / .4);
+        /* dark polish */
+      }
+    }
+
+    /* ========================== TOKENS ========================= */
+    @layer tokens {
+      body {
+        font-family: var(--font-sans);
+        font-size: var(--text-base);
+        line-height: var(--leading-normal);
+        color: rgb(var(--gray-700));
+        background: rgb(var(--gray-50));
+        transition: background-color var(--duration-normal) var(--ease-out), color var(--duration-normal) var(--ease-out);
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: var(--font-display);
+        font-weight: 800;
+        line-height: var(--leading-tight);
+        color: rgb(var(--gray-900))
+      }
+
+      h1 {
+        font-size: var(--text-5xl)
+      }
+
+      h2 {
+        font-size: var(--text-4xl)
+      }
+
+      h3 {
+        font-size: var(--text-xl)
+      }
+
+      h4 {
+        font-size: var(--text-lg)
+      }
+
+      ::selection {
+        background: rgb(var(--color-accent)/.2);
+        color: rgb(var(--gray-950))
+      }
+    }
+
+    /* ========================== LAYOUT ========================= */
+    @layer layout {
+      .container {
+        --_padding: clamp(1.5rem, 5vw, 2rem);
+        width: min(100% - var(--_padding)*2, var(--container-max-width));
+        margin-inline: auto
+      }
+
+      .section {
+        padding-block: clamp(var(--space-3xl), 10vw, var(--space-4xl))
+      }
+
+      section[id] {
+        scroll-margin-top: 6rem
+      }
+    }
+
+    /* ======================== COMPONENTS ======================= */
+    @layer components {
+      .skip-link {
+        position: fixed;
+        left: var(--space-lg);
+        top: -4rem;
+        z-index: var(--z-tooltip);
+        padding: var(--space-sm) var(--space-md);
+        background: rgb(var(--color-accent));
+        color: #fff;
+        border-radius: var(--radius-full);
+        box-shadow: var(--shadow-lg);
+        transition: top var(--duration-normal) var(--ease-out);
+      }
+
+      .skip-link:focus {
+        top: var(--space-lg)
+      }
+
+      /* Navbar */
+      .navbar {
+        position: fixed;
+        inset-inline: 0;
+        top: 0;
+        z-index: var(--z-sticky);
+        background: rgb(var(--gray-50)/.7);
+        backdrop-filter: blur(12px) saturate(1.5);
+        border-bottom: 1px solid rgb(var(--gray-200)/.5);
+        transition: all var(--duration-normal) var(--ease-out);
+      }
+
+      .navbar.scrolled {
+        background: rgb(var(--gray-50)/.9);
+        box-shadow: var(--shadow-md)
+      }
+
+      .navbar::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        top: 4.5rem;
+        background: rgb(0 0 0/.4);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--duration-normal) var(--ease-out);
+      }
+
+      .navbar.has-backdrop::after {
+        opacity: 1;
+        pointer-events: auto
+      }
+
+      .navbar__container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 4.5rem;
+        padding-block: var(--space-sm)
+      }
+
+      .navbar__logo {
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm);
+        font-family: var(--font-display);
+        font-size: var(--text-xl);
+        font-weight: 800;
+        color: rgb(var(--gray-900));
+        transition: transform var(--duration-fast) var(--ease-out)
+      }
+
+      .navbar__logo span {
+        color: rgb(var(--color-accent))
+      }
+
+      .navbar__logo:hover {
+        transform: scale(1.05)
+      }
+
+      .navbar__menu {
+        display: flex;
+        align-items: center;
+        gap: var(--space-md)
+      }
+
+      .navbar__menu>ul[role="list"] {
+        display: contents
+      }
+
+      .navbar__menu>ul[role="list"]>li {
+        display: contents
+      }
+
+      .navbar__link {
+        position: relative;
+        padding: var(--space-sm) var(--space-md);
+        font-weight: 600;
+        color: rgb(var(--gray-600));
+        border-radius: var(--radius-md);
+        transition: color var(--duration-fast) var(--ease-out), background-color var(--duration-fast) var(--ease-out);
+      }
+
+      .navbar__link:hover,
+      .navbar__link:focus-visible {
+        color: rgb(var(--color-accent));
+        background-color: rgb(var(--color-accent)/.1)
+      }
+
+      .navbar__link::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 6px;
+        transform: translateX(-50%) scaleX(0);
+        width: 80%;
+        height: 2px;
+        background: rgb(var(--color-accent));
+        border-radius: 2px;
+        transition: transform .25s var(--ease-out);
+      }
+
+      .navbar__link:hover::after,
+      .navbar__link:focus-visible::after,
+      .navbar__link.active::after {
+        transform: translateX(-50%) scaleX(1)
+      }
+
+      .navbar__link.active {
+        color: rgb(var(--color-accent));
+        font-weight: 700
+      }
+
+      @media (max-width:50em) {
+        .navbar__menu {
+          position: fixed;
+          inset: 4.5rem 0 0 0;
+          height: calc(100dvh - 4.5rem);
+          background: rgb(var(--gray-50));
+          flex-direction: column;
+          justify-content: flex-start;
+          padding: var(--space-2xl) var(--space-lg);
+          gap: var(--space-lg);
+          transform: translateX(100%);
+          transition: transform var(--duration-normal) var(--ease-out);
+          will-change: transform;
+        }
+
+        .navbar__menu.active {
+          transform: translateX(0)
+        }
+
+        body.menu-open {
+          overflow: hidden
+        }
+      }
+
+      /* Buttons */
+      .btn {
+        --_bg: var(--color-primary);
+        --_color: var(--gray-50);
+        --_border: var(--color-primary);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-sm);
+        padding: var(--space-md) var(--space-xl);
+        font-weight: 600;
+        color: rgb(var(--_color));
+        background: rgb(var(--_bg));
+        border: 2px solid rgb(var(--_border));
+        border-radius: var(--radius-full);
+        box-shadow: var(--shadow-md);
+        cursor: pointer;
+        transition: all var(--duration-normal) var(--ease-out);
+        vertical-align: middle;
+        background-size: 200% auto;
+        /* for gradient hover shimmer on primary */
+      }
+
+      .btn i {
+        margin-right: var(--space-xs)
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg)
+      }
+
+      .btn:active {
+        transform: translateY(0);
+        box-shadow: var(--shadow-sm)
+      }
+
+      .btn--primary {
+        --_bg: var(--color-accent);
+        --_border: var(--color-accent);
+        color: rgb(var(--color-primary));
+        background-image: linear-gradient(90deg, rgb(var(--color-accent)) 0%, color-mix(in srgb, rgb(var(--color-accent)) 80%, #fff) 50%, rgb(var(--color-accent)) 100%);
+      }
+
+      .btn--primary:hover {
+        background-position: right center
+      }
+
+      .btn--secondary {
+        --_bg: transparent;
+        --_color: var(--gray-800);
+        --_border: var(--gray-300);
+        background: rgb(var(--gray-50));
+        box-shadow: var(--shadow-sm)
+      }
+
+      .btn--secondary:hover {
+        background: rgb(var(--gray-100));
+        border-color: rgb(var(--gray-400))
+      }
+
+      .btn--small {
+        padding: var(--space-sm) var(--space-lg);
+        font-size: var(--text-sm)
+      }
+
+      .btn-group {
+        display: flex;
+        gap: .5rem;
+        flex-wrap: wrap;
+        justify-content: flex-end
+      }
+
+      .btn:disabled {
+        position: relative;
+        overflow: hidden;
+        opacity: .8
+      }
+
+      .btn:disabled::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgb(255 255 255/.2), transparent);
+        animation: shimmer 2s infinite;
+      }
+
+      @keyframes shimmer {
+        to {
+          left: 100%
+        }
+      }
+
+      /* Cards */
+      .card {
+        position: relative;
+        isolation: isolate;
+        background: rgb(var(--gray-100));
+        border: 1px solid rgb(var(--gray-200));
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-card);
+        overflow: hidden;
+        transition: transform var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out), border-color var(--duration-normal) var(--ease-out);
+      }
+
+      .card:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-xl);
+        border-color: rgb(var(--color-accent)/.5)
+      }
+
+      /* Spotlight hover (GPU-cheap) for cards */
+      .card::before,
+      .roadmap-card::before,
+      .achievement-card::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        z-index: -1;
+        pointer-events: none;
+        border-radius: inherit;
+        background: radial-gradient(400px 200px at var(--x, -999px) var(--y, -999px), rgb(var(--color-accent)/.18), transparent 60%);
+        opacity: 0;
+        transition: opacity var(--duration-slow) var(--ease-out);
+      }
+
+      .card:hover::before,
+      .roadmap-card:hover::before,
+      .achievement-card:hover::before {
+        opacity: 1
+      }
+
+      /* Hero */
+      .hero {
+        position: relative;
+        min-height: min(90svh, 720px);
+        display: grid;
+        align-items: center;
+        padding-top: 6rem;
+        padding-bottom: 2rem;
+        overflow: hidden
+      }
+
+      .hero__bg {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: radial-gradient(circle at 15% 25%, rgb(var(--color-accent)/.15), transparent 40%),
+          radial-gradient(circle at 85% 75%, rgb(var(--color-primary)/.1), transparent 50%);
+      }
+
+      /* gradient mesh animation */
+      .hero__bg::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 20% 80%, rgb(var(--color-accent)/.08) 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, rgb(var(--color-secondary)/.06) 0%, transparent 50%),
+          radial-gradient(circle at 40% 40%, rgb(var(--color-primary)/.04) 0%, transparent 50%);
+        animation: gradientShift 20s ease infinite;
+      }
+
+      @keyframes gradientShift {
+
+        0%,
+        100% {
+          transform: rotate(0deg) scale(1)
+        }
+
+        33% {
+          transform: rotate(120deg) scale(1.1)
+        }
+
+        66% {
+          transform: rotate(240deg) scale(.9)
+        }
+      }
+
+      .hero__bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        opacity: .02;
+      }
+
+      .hero__grid {
+        display: grid;
+        gap: var(--space-3xl);
+        align-items: center
+      }
+
+      .hero__content {
+        text-align: center
+      }
+
+      .hero__badge {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-sm);
+        padding: var(--space-xs) var(--space-lg);
+        background: rgb(var(--color-accent)/.1);
+        color: rgb(var(--color-accent));
+        border-radius: var(--radius-full);
+        font-size: var(--text-sm);
+        font-weight: 600;
+        animation: pulse 2.5s ease-in-out infinite
+      }
+
+      @keyframes pulse {
+
+        0%,
+        100% {
+          transform: scale(1)
+        }
+
+        50% {
+          transform: scale(1.03)
+        }
+      }
+
+      .hero__title {
+        margin-block: var(--space-md)
+      }
+
+      .hero__title span {
+        background: linear-gradient(120deg, rgb(var(--color-accent)), rgb(var(--color-primary)));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent
+      }
+
+      .hero__description {
+        font-size: var(--text-lg);
+        color: rgb(var(--gray-600));
+        line-height: var(--leading-relaxed);
+        max-width: 60ch;
+        margin-inline: auto
+      }
+
+      .hero__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-md);
+        margin-top: var(--space-2xl);
+        justify-content: center
+      }
+
+      .hero__visual {
+        display: grid;
+        gap: var(--space-lg);
+        max-width: 480px;
+        margin-inline: auto
+      }
+
+      .hero__image-wrapper {
+        border-radius: var(--radius-2xl);
+        box-shadow: var(--shadow-xl);
+        padding: 8px;
+        background: linear-gradient(135deg, rgb(var(--color-accent)/.2), rgb(var(--color-primary)/.1))
+      }
+
+      .hero__image-wrapper img {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 454/550;
+        object-fit: cover;
+        border-radius: var(--radius-xl)
+      }
+
+      .hero__stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: var(--space-sm)
+      }
+
+      @media (min-width:62em) {
+        .hero__grid {
+          grid-template-columns: 1.2fr 1fr
+        }
+
+        .hero__content {
+          text-align: left
+        }
+
+        .hero__description {
+          margin-inline: 0
+        }
+
+        .hero__actions {
+          justify-content: flex-start
+        }
+      }
+
+      .stat {
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        background: rgb(var(--gray-100));
+        border: 1px solid rgb(var(--gray-200));
+        border-radius: var(--radius-lg);
+        padding: var(--space-sm) var(--space-md);
+        text-align: center;
+        transition: all var(--duration-normal) var(--ease-out);
+        cursor: pointer;
+      }
+
+      .stat:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+        border-color: rgb(var(--color-accent)/.3)
+      }
+
+      /* slide-up highlight on hover */
+      .stat::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgb(var(--color-accent)/.1);
+        transform: translateY(100%);
+        transition: transform var(--duration-normal) var(--ease-in-out);
+        z-index: -1;
+      }
+
+      .stat:hover::before {
+        transform: translateY(0)
+      }
+
+      .stat__value {
+        font-size: var(--text-lg);
+        font-weight: 800;
+        color: rgb(var(--gray-900))
+      }
+
+      .stat__label {
+        font-size: var(--text-xs);
+        color: rgb(var(--gray-500));
+        text-transform: uppercase;
+        letter-spacing: .05em
+      }
+
+      /* Section header */
+      .section-header {
+        text-align: center;
+        margin-bottom: var(--space-3xl);
+        max-width: 70ch;
+        margin-inline: auto
+      }
+
+      .section-header__badge {
+        display: inline-block;
+        padding: var(--space-xs) var(--space-md);
+        background: rgb(var(--color-accent)/.1);
+        color: rgb(var(--color-accent));
+        border-radius: var(--radius-full);
+        font-size: var(--text-sm);
+        font-weight: 600;
+        margin-bottom: var(--space-md)
+      }
+
+      .section-header__title {
+        margin-bottom: var(--space-md)
+      }
+
+      .section-header__description {
+        font-size: var(--text-lg);
+        color: rgb(var(--gray-600))
+      }
+
+      /* ===== GitHub-like Repos ===== */
+      .gh-repo-list {
+        display: block;
+        background: transparent;
+        border-radius: var(--radius-xl)
+      }
+
+      .gh-repo-item {
+        padding: 1rem 0;
+        border-bottom: 1px solid #d0d7de
+      }
+
+      .gh-repo-item:last-child {
+        border-bottom: 0
+      }
+
+      .gh-repo-name {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        margin-bottom: .25rem
+      }
+
+      .gh-repo-icon {
+        flex: 0 0 auto;
+        fill: currentColor;
+        color: rgb(var(--gray-600))
+      }
+
+      /* Animated underline for repo name */
+      .gh-repo-name a {
+        color: #0969da;
+        font-weight: 600;
+        letter-spacing: .01em;
+        text-decoration: none;
+        background: linear-gradient(currentColor 0 0) 0 100% / 0 2px no-repeat;
+        transition: background-size var(--duration-fast) var(--ease-out);
+      }
+
+      .gh-repo-name a:hover,
+      .gh-repo-name a:focus-visible {
+        background-size: 100% 2px
+      }
+
+      /* Clamp descriptions to 2 lines */
+      .gh-repo-description {
+        color: #57606a;
+        margin: .25rem 0 .5rem;
+        max-width: 65ch;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+      }
+
+      .gh-repo-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .375rem;
+        margin: .25rem 0 .75rem
+      }
+
+      .gh-tag {
+        display: inline-block;
+        padding: .15rem .5rem;
+        font-size: .8125rem;
+        line-height: 1.2;
+        font-weight: 600;
+        color: #0969da;
+        background: #ddf4ff;
+        border: 1px solid #0969da22;
+        border-radius: 999px;
+        transition: all .3s cubic-bezier(.4, 0, .2, 1);
+      }
+
+      .gh-tag:hover {
+        transform: translateY(-2px) scale(1.05);
+        background: rgb(var(--color-accent)/.2);
+        box-shadow: 0 4px 12px rgb(var(--color-accent)/.2)
+      }
+
+      .gh-repo-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1rem;
+        color: #57606a;
+        font-size: .875rem
+      }
+
+      .gh-meta-item {
+        display: inline-flex;
+        align-items: center;
+        gap: .35rem
+      }
+
+      .gh-language-dot {
+        width: .75rem;
+        height: .75rem;
+        border-radius: 50%;
+        display: inline-block;
+        translate: 0 .5px;
+        box-shadow: 0 0 0 1px #00000010 inset
+      }
+
+      /* Language colors */
+      .gh-language-dot[data-lang="Python"] {
+        background-color: #3572A5
+      }
+
+      .gh-language-dot[data-lang="JavaScript"] {
+        background-color: #f1e05a
+      }
+
+      .gh-language-dot[data-lang="TypeScript"] {
+        background-color: #3178c6
+      }
+
+      .gh-language-dot[data-lang="HTML"] {
+        background-color: #e34c26
+      }
+
+      .gh-language-dot[data-lang="CSS"] {
+        background-color: #563d7c
+      }
+
+      .gh-language-dot[data-lang="Jupyter"] {
+        background-color: #DA5B0B
+      }
+
+      .gh-meta-icon {
+        width: 16px;
+        height: 16px;
+        fill: currentColor;
+        color: #57606a
+      }
+
+      /* Dark theme tweaks */
+      [data-theme="dark"] #projects .gh-repo-item {
+        border-color: rgb(var(--gray-300))
+      }
+
+      [data-theme="dark"] #projects .gh-repo-name a {
+        color: #58a6ff
+      }
+
+      [data-theme="dark"] #projects .gh-tag {
+        color: #58a6ff;
+        background: color-mix(in srgb, #58a6ff 18%, transparent);
+        border-color: color-mix(in srgb, #58a6ff 22%, transparent);
+      }
+
+      [data-theme="dark"] #projects .gh-repo-description,
+      [data-theme="dark"] #projects .gh-repo-meta,
+      [data-theme="dark"] #projects .gh-meta-icon {
+        color: rgb(var(--gray-600))
+      }
+
+      /* Projects / Achievements (core) */
+      .project-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%
+      }
+
+      .project-card__image {
+        height: 14rem;
+        background: linear-gradient(135deg, rgb(var(--gray-800)), rgb(var(--gray-900)));
+        display: grid;
+        place-items: center;
+        position: relative;
+        overflow: hidden
+      }
+
+      .project-card__image i {
+        font-size: 3rem;
+        color: rgb(var(--color-accent))
+      }
+
+      .project-card__image::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at center, transparent 30%, rgb(0 0 0 /.3))
+      }
+
+      .project-card__overlay {
+        position: absolute;
+        inset: 0;
+        background: rgb(0 0 0 /.7);
+        backdrop-filter: blur(4px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-md);
+        opacity: 0;
+        transition: opacity var(--duration-normal) var(--ease-out)
+      }
+
+      .project-card:hover .project-card__overlay {
+        opacity: 1
+      }
+
+      .project-card__link {
+        width: 3rem;
+        height: 3rem;
+        background: #fff;
+        color: rgb(var(--gray-800));
+        border-radius: var(--radius-full);
+        display: grid;
+        place-items: center;
+        transition: transform var(--duration-fast) var(--ease-out), background-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out)
+      }
+
+      .project-card__link:hover {
+        transform: scale(1.1);
+        background: rgb(var(--color-accent));
+        color: #fff
+      }
+
+      .project-card__content {
+        padding: var(--space-lg);
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1
+      }
+
+      .project-card__description {
+        color: rgb(var(--gray-600));
+        margin-block: var(--space-sm) var(--space-lg);
+        flex-grow: 1
+      }
+
+      .project-card__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-sm)
+      }
+
+      .tag {
+        padding: var(--space-xs) var(--space-md);
+        background: rgb(var(--gray-200));
+        color: rgb(var(--gray-700));
+        border-radius: var(--radius-full);
+        font-size: var(--text-xs);
+        font-weight: 500
+      }
+
+      .achievement-card {
+        padding: var(--space-lg);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-md);
+        transition: box-shadow .3s cubic-bezier(.4, 0, .2, 1)
+      }
+
+      .achievement-card:hover {
+        box-shadow: 0 0 30px rgb(var(--color-accent)/.15), var(--shadow-xl)
+      }
+
+      .achievement-card__header {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--space-md)
+      }
+
+      .achievement-card__icon {
+        width: 3rem;
+        height: 3rem;
+        flex-shrink: 0;
+        background: linear-gradient(135deg, rgb(var(--color-accent)), rgb(var(--color-accent)/.7));
+        border-radius: var(--radius-lg);
+        display: grid;
+        place-items: center;
+        color: #fff;
+        animation: float 3s ease-in-out infinite
+      }
+
+      @keyframes float {
+
+        0%,
+        100% {
+          transform: translateY(0)
+        }
+
+        50% {
+          transform: translateY(-5px)
+        }
+      }
+
+      .achievement-card__year {
+        font-size: var(--text-sm);
+        color: rgb(var(--gray-500))
+      }
+
+      .achievement-card__cta {
+        align-self: flex-start;
+        margin-top: auto
+      }
+
+      /* ===== Roadmap (polished, hopeful, aesthetic) ===== */
+      .roadmap-grid {
+        display: grid;
+        gap: var(--space-xl);
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr))
+      }
+
+      .roadmap-card {
+        position: relative;
+        padding: clamp(1rem, 2vw, 1.25rem) clamp(1rem, 2vw, 1.25rem) var(--space-xl);
+        background: linear-gradient(180deg, rgb(var(--gray-100)) 0%, rgb(var(--gray-50)) 100%);
+        border: 1px solid rgb(var(--gray-200));
+        border-radius: calc(var(--radius-2xl) - 2px);
+        box-shadow: var(--shadow-xl);
+        isolation: isolate;
+        transition: transform var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out), border-color var(--duration-normal) var(--ease-out);
+      }
+
+      /* inner soft highlight */
+      .roadmap-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        box-shadow: inset 0 1px 0 0 rgb(255 255 255 / .45);
+        pointer-events: none
+      }
+
+      .roadmap-card:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-2xl);
+        border-color: rgb(var(--color-accent)/.45)
+      }
+
+      .roadmap-card h3 {
+        font-size: var(--text-2xl);
+        letter-spacing: .01em;
+        color: rgb(var(--gray-900));
+        margin: .35rem 0 .5rem
+      }
+
+      .roadmap-card p {
+        color: rgb(var(--gray-600));
+        line-height: var(--leading-relaxed);
+        max-width: 60ch
+      }
+
+      /* stage pill */
+      .roadmap-card__status {
+        display: inline-flex;
+        align-items: center;
+        gap: .5rem;
+        padding: .35rem .7rem;
+        font-weight: 700;
+        font-size: var(--text-sm);
+        border-radius: var(--radius-full);
+        border: 1px solid transparent;
+        box-shadow: var(--shadow-xs);
+        letter-spacing: .02em;
+        margin-bottom: .35rem;
+      }
+
+      .roadmap-card__status i {
+        font-size: .9em
+      }
+
+      .roadmap-card__status[data-status="In Development"] {
+        color: rgb(var(--color-accent));
+        background: rgb(var(--color-accent)/.12);
+        border-color: rgb(var(--color-accent)/.28)
+      }
+
+      .roadmap-card__status[data-status="Planning"] {
+        color: rgb(var(--color-secondary));
+        background: rgb(var(--color-secondary)/.12);
+        border-color: rgb(var(--color-secondary)/.28)
+      }
+
+      .roadmap-card__status[data-status="Research"] {
+        color: #7C3AED;
+        background: color-mix(in srgb, #7C3AED 16%, transparent);
+        border-color: color-mix(in srgb, #7C3AED 28%, transparent)
+      }
+
+      .roadmap-card__status[data-status="Concept"] {
+        color: #059669;
+        background: color-mix(in srgb, #059669 16%, transparent);
+        border-color: color-mix(in srgb, #059669 28%, transparent)
+      }
+
+      /* progress bar (set --progress: 0→1 on the card) */
+      .roadmap-card__progress {
+        height: 8px;
+        border-radius: 999px;
+        overflow: hidden;
+        background: rgb(var(--gray-200));
+        margin-top: var(--space-lg);
+        box-shadow: inset 0 1px 0 rgb(255 255 255 / .35)
+      }
+
+      .roadmap-card__progress>span {
+        display: block;
+        height: 100%;
+        width: 100%;
+        transform-origin: left center;
+        transform: scaleX(var(--progress, .35));
+        transition: transform var(--duration-slow) var(--ease-in-out);
+        background: linear-gradient(90deg, rgb(var(--color-accent)), color-mix(in srgb, rgb(var(--color-accent)) 55%, rgb(var(--color-primary))));
+        filter: saturate(1.1);
+      }
+
+      /* dark theme tune-up */
+      [data-theme="dark"] .roadmap-card {
+        background: linear-gradient(180deg, rgb(var(--gray-100)) 0%, rgb(var(--gray-100)) 100%);
+        border-color: rgb(var(--gray-300));
+        box-shadow: 0 6px 14px -6px rgb(0 0 0 / .45), 0 1px 0 0 rgb(255 255 255 / .04) inset
+      }
+
+      [data-theme="dark"] .roadmap-card h3 {
+        color: rgb(var(--gray-900))
+      }
+
+      [data-theme="dark"] .roadmap-card p {
+        color: rgb(var(--gray-600))
+      }
+
+      [data-theme="dark"] .roadmap-card__progress {
+        background: rgb(var(--gray-300))
+      }
+
+      /* Contact */
+      .contact-grid {
+        display: grid;
+        gap: var(--space-2xl)
+      }
+
+      @media (min-width:50em) {
+        .contact-grid {
+          grid-template-columns: 1fr 1.2fr;
+          align-items: start
+        }
+      }
+
+      .contact-info__item {
+        display: flex;
+        align-items: center;
+        gap: var(--space-md);
+        padding: var(--space-md);
+        border-radius: var(--radius-lg);
+        transition: background-color var(--duration-normal) var(--ease-out);
+        background: rgb(var(--gray-50)/.6);
+        backdrop-filter: blur(10px) saturate(1.8);
+        border: 1px solid rgb(var(--gray-200)/.3);
+      }
+
+      .contact-info__item:hover {
+        background: rgb(var(--gray-200)/.6)
+      }
+
+      [data-theme="dark"] .contact-info__item {
+        background: rgb(var(--gray-100)/.4);
+        border-color: rgb(var(--gray-300)/.2)
+      }
+
+      .contact-info__icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        flex-shrink: 0;
+        background: linear-gradient(135deg, rgb(var(--color-accent)), rgb(var(--color-accent)/.7));
+        border-radius: var(--radius-full);
+        display: grid;
+        place-items: center;
+        color: #fff
+      }
+
+      .contact-info__label {
+        font-weight: 600;
+        color: rgb(var(--gray-800))
+      }
+
+      .contact-info__value {
+        color: rgb(var(--gray-600));
+        font-size: var(--text-sm)
+      }
+
+      .form__group {
+        margin-bottom: var(--space-lg)
+      }
+
+      .form__label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: var(--space-sm);
+        color: rgb(var(--gray-800))
+      }
+
+      .form__input,
+      .form__textarea {
+        width: 100%;
+        padding: var(--space-md);
+        background: rgb(var(--gray-50));
+        border: 2px solid rgb(var(--gray-200));
+        border-radius: var(--radius-lg);
+        transition: all var(--duration-fast) var(--ease-out);
+      }
+
+      .form__input:focus,
+      .form__textarea:focus {
+        border-color: rgb(var(--color-accent));
+        box-shadow: 0 0 0 4px rgb(var(--color-accent)/.15)
+      }
+
+      .form__textarea {
+        min-height: 8rem;
+        resize: vertical
+      }
+
+      /* Footer */
+      .footer {
+        background: rgb(var(--gray-900));
+        color: rgb(var(--gray-400));
+        padding-block: var(--space-3xl) var(--space-xl);
+        margin-top: var(--space-4xl);
+        text-align: center
+      }
+
+      .footer__logo {
+        font-family: var(--font-display);
+        font-size: var(--text-2xl);
+        font-weight: 800;
+        margin-bottom: var(--space-md);
+        color: rgb(var(--gray-100))
+      }
+
+      .footer__description {
+        max-width: 45ch;
+        margin-inline: auto;
+        margin-bottom: var(--space-xl)
+      }
+
+      .footer__socials {
+        display: flex;
+        justify-content: center;
+        gap: var(--space-md);
+        margin-bottom: var(--space-xl)
+      }
+
+      .footer__copyright {
+        padding-top: var(--space-xl);
+        border-top: 1px solid rgb(var(--gray-800));
+        color: rgb(var(--gray-500));
+        font-size: var(--text-sm)
+      }
+
+      .social-link {
+        width: 2.5rem;
+        height: 2.5rem;
+        background: rgb(var(--gray-800));
+        border-radius: var(--radius-full);
+        display: grid;
+        place-items: center;
+        color: rgb(var(--gray-300));
+        transition: all var(--duration-normal) var(--ease-out)
+      }
+
+      .social-link:hover {
+        background: rgb(var(--color-accent));
+        color: #fff;
+        transform: translateY(-4px) rotate(5deg)
+      }
+
+      /* =================== Certificate Modal ==================== */
+      dialog.cert-modal:not([open]) {
+        display: none
+      }
+
+      dialog.cert-modal {
+        max-width: 920px;
+        width: min(920px, 92vw);
+        border: 1px solid rgb(var(--gray-300));
+        border-radius: calc(var(--radius-2xl) - 4px);
+        padding: 0;
+        margin: auto;
+        max-height: 92vh;
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(180deg, rgb(var(--gray-50)) 0%, rgb(var(--gray-100)) 100%);
+        box-shadow: 0 1px 0 0 rgb(255 255 255 / .7) inset, 0 20px 30px -12px rgb(0 0 0 / .25), 0 10px 20px -14px rgb(0 0 0 / .25);
+        overflow: hidden;
+      }
+
+      dialog[open].cert-modal {
+        animation: modalIn 280ms var(--ease-out)
+      }
+
+      dialog.cert-modal.closing {
+        animation: modalOut 220ms var(--ease-out) forwards
+      }
+
+      @keyframes modalIn {
+        from {
+          opacity: 0;
+          transform: translateY(8px) scale(.98)
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1)
+        }
+      }
+
+      @keyframes modalOut {
+        to {
+          opacity: 0;
+          transform: translateY(8px) scale(.98)
+        }
+      }
+
+      .cert-modal::backdrop {
+        background: rgb(5 8 20 / .55);
+        backdrop-filter: blur(8px) saturate(1.2)
+      }
+
+      .cert-modal__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--space-md) var(--space-lg);
+        border-bottom: 1px solid rgb(var(--gray-200));
+        background: linear-gradient(180deg, rgb(var(--gray-100)), rgb(var(--gray-100)/.8));
+        position: sticky;
+        top: 0;
+        z-index: 1;
+      }
+
+      .cert-modal__title {
+        font-size: var(--text-lg);
+        font-weight: 800;
+        color: rgb(var(--gray-900))
+      }
+
+      .cert-modal__close-btn {
+        background: transparent;
+        border: none;
+        font-size: 1.25rem;
+        color: rgb(var(--gray-500));
+        cursor: pointer;
+        width: 2.25rem;
+        height: 2.25rem;
+        display: grid;
+        place-items: center;
+        border-radius: var(--radius-full);
+        transition: color var(--duration-fast) var(--ease-out), background-color var(--duration-fast) var(--ease-out);
+      }
+
+      .cert-modal__close-btn:hover {
+        color: rgb(var(--gray-900));
+        background-color: rgb(var(--gray-200))
+      }
+
+      .cert-modal__body {
+        padding: var(--space-lg);
+        overflow: auto;
+        display: grid;
+        place-items: center;
+        background: radial-gradient(1200px 600px at 10% 0%, rgb(var(--color-accent)/.06), transparent 60%)
+      }
+
+      .cert-modal__img {
+        width: 100%;
+        height: auto;
+        max-height: calc(92vh - 9.75rem);
+        object-fit: contain;
+        border-radius: var(--radius-md);
+        border: 1px solid rgb(var(--gray-200));
+        background: rgb(var(--gray-100))
+      }
+
+      .cert-meta {
+        margin-top: .75rem;
+        font-size: var(--text-sm);
+        color: rgb(var(--gray-600));
+        text-align: center;
+        word-break: break-word
+      }
+
+      .cert-modal__footer {
+        padding: var(--space-md) var(--space-lg);
+        border-top: 1px solid rgb(var(--gray-200));
+        background: linear-gradient(0deg, rgb(var(--gray-100)), rgb(var(--gray-100)/.8));
+        position: sticky;
+        bottom: 0;
+        z-index: 1;
+      }
+
+      /* Spinner & fallback */
+      .spinner {
+        width: 32px;
+        height: 32px;
+        border: 3px solid rgb(var(--gray-300));
+        border-top-color: rgb(var(--color-accent));
+        border-radius: 50%;
+        animation: spin .8s linear infinite
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg)
+        }
+      }
+
+      .modal-fallback {
+        color: rgb(var(--gray-600));
+        text-align: center;
+        padding: .75rem 0
+      }
+
+      /* Disabled state for View Original when no link */
+      .btn[aria-disabled="true"] {
+        opacity: .55;
+        pointer-events: none
+      }
+
+      /* Toggles */
+      .theme-toggle,
+      .mobile-toggle {
+        background: transparent;
+        border: none;
+        padding: var(--space-sm);
+        cursor: pointer;
+        color: rgb(var(--gray-600));
+        display: grid;
+        place-items: center;
+        transition: color var(--duration-fast) var(--ease-out), background-color var(--duration-fast) var(--ease-out);
+        border-radius: var(--radius-md);
+      }
+
+      .theme-toggle:hover,
+      .mobile-toggle:hover {
+        color: rgb(var(--color-accent));
+        background-color: rgb(var(--color-accent)/.1)
+      }
+
+      .theme-toggle {
+        position: relative;
+        width: 2.5rem;
+        height: 2.5rem
+      }
+
+      .theme-toggle i {
+        font-size: 1.25rem;
+        position: absolute;
+        transition: opacity var(--duration-normal) var(--ease-out), transform var(--duration-normal) var(--ease-out)
+      }
+
+      .theme-toggle .fa-sun {
+        opacity: 0;
+        transform: rotate(-90deg)
+      }
+
+      [data-theme="dark"] .theme-toggle .fa-sun {
+        opacity: 1;
+        transform: rotate(0)
+      }
+
+      [data-theme="dark"] .theme-toggle .fa-moon {
+        opacity: 0;
+        transform: rotate(90deg)
+      }
+
+      .mobile-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        z-index: var(--z-tooltip)
+      }
+
+      @media (max-width:50em) {
+        .mobile-toggle {
+          display: flex
+        }
+      }
+
+      .mobile-toggle span {
+        width: 1.5rem;
+        height: 2px;
+        background: currentColor;
+        border-radius: var(--radius-full);
+        transition: all var(--duration-normal) var(--ease-out)
+      }
+
+      .mobile-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px)
+      }
+
+      .mobile-toggle.active span:nth-child(2) {
+        opacity: 0
+      }
+
+      .mobile-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px)
+      }
+
+      /* Top scroll progress bar (auto-injected) */
+      .page-progress {
+        position: fixed;
+        inset: 0 0 auto 0;
+        height: 3px;
+        z-index: 9999;
+        pointer-events: none;
+        background: transparent;
+      }
+
+      .page-progress::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        transform: scaleX(var(--scrollProgress, 0));
+        transform-origin: 0 50%;
+        background: linear-gradient(90deg, rgb(var(--color-accent)), rgb(var(--color-primary)));
+        box-shadow: 0 0 12px rgb(var(--color-accent)/.55);
+        transition: transform 60ms linear;
+      }
+
+      /* Back to top button */
+      .to-top {
+        position: fixed;
+        right: clamp(1rem, 3vw, 1.25rem);
+        bottom: clamp(1rem, 3vw, 1.25rem);
+        width: 44px;
+        height: 44px;
+        border-radius: 999px;
+        border: none;
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+        color: #fff;
+        background: rgb(var(--color-accent));
+        box-shadow: var(--shadow-lg);
+        opacity: 0;
+        transform: translateY(8px);
+        pointer-events: none;
+        transition: opacity var(--duration-normal) var(--ease-out), transform var(--duration-normal) var(--ease-out);
+        z-index: var(--z-tooltip);
+      }
+
+      .to-top.show {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto
+      }
+    }
+
+    /* ========================= UTILITIES ======================= */
+    @layer utilities {
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0
+      }
+
+      .fade-in {
+        animation: fadeIn var(--duration-slow) var(--ease-out) both
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px)
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0)
+        }
+      }
+
+      .stagger {
+        animation-delay: calc(var(--i, 0) * 100ms)
+      }
+
+      /* Section reveal accent line */
+      section {
+        position: relative
+      }
+
+      section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 1px;
+        height: 100px;
+        background: linear-gradient(to bottom, transparent, rgb(var(--color-accent)/.3), transparent);
+        opacity: 0;
+        animation: lineReveal 1s ease forwards;
+      }
+
+      @keyframes lineReveal {
+        to {
+          opacity: 1
+        }
+      }
+
+      /* === View Transitions for theme flip === */
+      html {
+        view-transition-name: root;
+      }
+
+      ::view-transition-old(root) {
+        animation: vtFadeOut .25s ease both
+      }
+
+      ::view-transition-new(root) {
+        animation: vtFadeIn .28s ease both
+      }
+
+      @keyframes vtFadeOut {
+        from {
+          opacity: 1
+        }
+
+        to {
+          opacity: .0
+        }
+      }
+
+      @keyframes vtFadeIn {
+        from {
+          opacity: .0
+        }
+
+        to {
+          opacity: 1
+        }
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#home" class="skip-link">Skip to content</a>
+
+  <!-- Navbar -->
+  <header class="navbar" role="banner">
+    <div class="container navbar__container">
+      <a href="#home" class="navbar__logo" aria-label="Linford Musiyambodza - Homepage">&lt;/&gt; L<span>M</span></a>
+
+      <nav id="primary-navigation" class="navbar__menu" role="navigation" aria-label="Main Navigation">
+        <ul role="list" style="display: contents">
+          <li><a href="#projects" class="navbar__link">Projects</a></li>
+          <li><a href="#achievements" class="navbar__link">Achievements</a></li>
+          <li><a href="#roadmap" class="navbar__link">Roadmap</a></li>
+          <li><a href="#contact" class="navbar__link">Contact</a></li>
+          <li>
+            <a href="resume.pdf" target="_blank" rel="noopener noreferrer" download="Linford-Musiyambodza-Resume.pdf"
+              class="btn btn--secondary btn--small">
+              <i class="fas fa-download" aria-hidden="true"></i>Resume
+            </a>
+          </li>
+          <li>
+            <button class="theme-toggle" aria-label="Toggle theme" title="Toggle theme" aria-pressed="false">
+              <span class="sr-only">Toggle theme</span>
+              <i class="fas fa-moon"></i>
+              <i class="fas fa-sun"></i>
+            </button>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="mobile-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-navigation">
+        <span class="sr-only">Menu</span>
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero__grid">
+          <div class="hero__content fade-in" style="--i:0">
+            <span class="hero__badge"><i class="fas fa-rocket" aria-hidden="true"></i>Available for Projects</span>
+            <h1 class="hero__title" id="hero-title">Hi, I'm <span>Linford Musiyambodza</span></h1>
+            <p class="hero__description">
+              Data Analyst | Cybersecurity Enthusiast | Founder of Linfy Tech Solutions. I use technology, data, and AI
+              to build solutions that help businesses and support global challenges like wildlife conservation.
+            </p>
+            <div class="hero__actions">
+              <a href="#projects" class="btn btn--primary"><i class="fas fa-eye"></i>View My Projects</a>
+              <a href="resume.pdf" target="_blank" rel="noopener noreferrer" download="Linford-Musiyambodza-Resume.pdf"
+                class="btn btn--secondary"><i class="fas fa-download"></i>Download Resume</a>
+            </div>
+          </div>
+
+          <div class="hero__visual fade-in" style="--i:1">
+            <div class="hero__image-wrapper">
+              <img src="founder.jpg" alt="A professional headshot of Linford Musiyambodza." width="454" height="550"
+                loading="eager">
+            </div>
+            <div class="hero__stats">
+              <div class="stat stagger" style="--i:0">
+                <div class="stat__value" data-count="12">0</div>
+                <div class="stat__label">Projects</div>
+              </div>
+              <div class="stat stagger" style="--i:1">
+                <div class="stat__value" data-count="2025">0</div>
+                <div class="stat__label">ALX Cert</div>
+              </div>
+              <div class="stat stagger" style="--i:2">
+                <div class="stat__value">Cape Town</div>
+                <div class="stat__label">Based</div>
+              </div>
+              <div class="stat stagger" style="--i:3">
+                <div class="stat__value">AI • Data</div>
+                <div class="stat__label">Focus</div>
+              </div>
+              <div class="stat stagger" style="--i:4">
+                <div class="stat__value">Security</div>
+                <div class="stat__label">Ethical</div>
+              </div>
+              <div class="stat stagger" style="--i:5">
+                <div class="stat__value">Open</div>
+                <div class="stat__label">Source</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <header class="section-header fade-in">
+          <h2 class="section-header__title" id="projects-title">From my GitHub</h2>
+          <p class="section-header__description">A selection of my open-source projects and contributions.</p>
+        </header>
+
+        <div class="gh-repo-list">
+          <!-- Repo 1: Thalink -->
+          <article class="gh-repo-item fade-in stagger" style="--i:0" data-repo="linfordlee14/thalink-api">
+            <div class="gh-repo-name">
+              <!-- Octicon repo -->
+              <svg aria-hidden="true" viewBox="0 0 16 16" width="16" height="16" class="gh-repo-icon">
+                <path fill-rule="evenodd"
+                  d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-1 1v2H2.5a.75.75 0 01-.75-.75V5h-1V2.5zM3.5 1h-1a.5.5 0 00-.5.5V4h1V1.5zM5 12.25a.25.25 0 01.25-.25h3.5a.25.25 0 01.25.25v3.25a.25.25 0 01-.4.2l-1.45-1.05a.25.25 0 00-.2 0L5.4 15.7a.25.25 0 01-.4-.2v-3.25z">
+                </path>
+              </svg>
+              <a href="https://github.com/linfordlee14/thalink-api" target="_blank" rel="noopener noreferrer">
+                BotBridge – WhatsApp Health Bot
+              </a>
+            </div>
+
+            <p class="gh-repo-description">
+              AI-powered WhatsApp bot designed to assist Thalassemia patients in India by providing information, reminders, and support resources.
+               
+            </p>
+
+            <div class="gh-repo-tags">
+              <span class="gh-tag">React</span>
+              <span class="gh-tag">Flask</span>
+              <span class="gh-tag">API</span>
+            </div>
+
+            <div class="gh-repo-meta">
+              <span class="gh-meta-item"><span class="gh-language-dot" data-lang="Python"></span> Python</span>
+              <span class="gh-meta-item">
+                <svg aria-hidden="true" viewBox="0 0 16 16" width="16" height="16" class="gh-meta-icon">
+                  <path fill-rule="evenodd"
+                    d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 13.125l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.192L.646 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z">
+                  </path>
+                </svg>
+                <span class="gh-stars" id="stars-thalink">15</span>
+              </span>
+              <span class="gh-meta-item">
+                <svg aria-hidden="true" viewBox="0 0 16 16" width="16" height="16" class="gh-meta-icon">
+                  <path fill-rule="evenodd"
+                    d="M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zM6.25 7A.75.75 0 017 6.25h2A.75.75 0 019.75 7v2.872a.75.75 0 01-1.5 0V7z">
+                  </path>
+                </svg>
+                <span class="gh-forks" id="forks-thalink">4</span>
+              </span>
+              <span class="gh-meta-item">Updated on Sep 10</span>
+            </div>
+          </article>
+
+          <!-- Repo 2: AI Wildlife -->
+          <article class="gh-repo-item fade-in stagger" style="--i:1" data-repo="linfordlee14/ai-wildlife-conservation">
+            <div class="gh-repo-name">
+              <svg aria-hidden="true" viewBox="0 0 16 16" width="16" height="16" class="gh-repo-icon">
+                <path fill-rule="evenodd"
+                  d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-1 1v2H2.5a.75.75 0 01-.75-.75V5h-1V2.5zM3.5 1h-1a.5.5 0 00-.5.5V4h1V1.5zM5 12.25a.25.25 0 01.25-.25h3.5a.25.25 0 01.25.25v3.25a.25.25 0 01-.4.2l-1.45-1.05a.25.25 0 00-.2 0L5.4 15.7a.25.25 0 01-.4-.2v-3.25z" />
+              </svg>
+              <a href="https://github.com/linfordlee14/WildGuard" target="_blank" rel="noopener noreferrer">AI Wildlife
+                Conservation Model</a>
+            </div>
+            <p class="gh-repo-description">
+              Linear regression (scikit-learn) over poaching & population data as a baseline for conservation analytics.
+            </p>
+            <div class="gh-repo-tags">
+              <span class="gh-tag">Python</span><span class="gh-tag">scikit-learn</span><span class="gh-tag">ML</span>
+            </div>
+            <div class="gh-repo-meta">
+              <span class="gh-meta-item"><span class="gh-language-dot" data-lang="Python"></span> Python</span>
+              <span class="gh-meta-item">
+                <svg aria-hidden="true" viewBox="0 0 16 16" width="16" height="16" class="gh-meta-icon">
+                  <path fill-rule="evenodd"
+                    d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 13.125l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.192L.646 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z" />
+                </svg>
+                <span class="gh-stars">0</span>
+              </span>
+              <span class="gh-meta-item">
+                <svg aria-hidden="true" viewBox="0 0 16 16" width="16" height="16" class="gh-meta-icon">
+                  <path fill-rule="evenodd"
+                    d="M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zM6.25 7A.75.75 0 017 6.25h2A.75.75 0 019.75 7v2.872a.75.75 0 01-1.5 0V7z" />
+                </svg>
+                <span class="gh-forks">0</span>
+              </span>
+              <span class="gh-meta-item">Updated on Sep 12</span>
+            </div>
+          </article>
+
+          <!-- Repo 3: Personal Finance Tracker -->
+          <article class="gh-repo-item fade-in stagger" style="--i:2" data-repo="linfordlee14/Personal_Finance_Tracer">
+            <div class="gh-repo-name">
+              <svg aria-hidden="true" viewBox="0 0 16 16" width="16" height="16" class="gh-repo-icon">
+                <path fill-rule="evenodd"
+                  d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-1 1v2H2.5a.75.75 0 01-.75-.75V5h-1V2.5zM3.5 1h-1a.5.5 0 00-.5.5V4h1V1.5zM5 12.25a.25.25 0 01.25-.25h3.5a.25.25 0 01.25.25v3.25a.25.25 0 01-.4.2l-1.45-1.05a.25.25 0 00-.2 0L5.4 15.7a.25.25 0 01-.4-.2v-3.25z" />
+              </svg>
+              <a href="https://github.com/linfordlee14/Personal_Finance_Tracer" target="_blank"
+                rel="noopener noreferrer">Personal Finance Tracker</a>
+            </div>
+            <p class="gh-repo-description">
+              Jupyter-based tracker for income/expenses with monthly summaries and savings goal charts.
+            </p>
+            <div class="gh-repo-tags">
+              <span class="gh-tag">Python</span><span class="gh-tag">Pandas</span><span class="gh-tag">Matplotlib</span>
+            </div>
+            <div class="gh-repo-meta">
+              <span class="gh-meta-item"><span class="gh-language-dot" data-lang="Jupyter"></span> Jupyter
+                Notebook</span>
+              <span class="gh-meta-item">
+                <svg aria-hidden="true" viewBox="0 0 16 16" width="16" height="16" class="gh-meta-icon">
+                  <path fill-rule="evenodd"
+                    d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 13.125l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.192L.646 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z" />
+                </svg>
+                <span class="gh-stars">0</span>
+              </span>
+              <span class="gh-meta-item">
+                <svg aria-hidden="true" viewBox="0 0 16 16" width="16" height="16" class="gh-meta-icon">
+                  <path fill-rule="evenodd"
+                    d="M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zM6.25 7A.75.75 0 017 6.25h2A.75.75 0 019.75 7v2.872a.75.75 0 01-1.5 0V7z" />
+                </svg>
+                <span class="gh-forks">0</span>
+              </span>
+              <span class="gh-meta-item">Updated on Sep 08</span>
+            </div>
+          </article>
+
+          <!-- Repo 4: FarmConnect (CodeCamp Major Project) -->
+          <article class="gh-repo-item fade-in stagger" style="--i:3" data-repo="linfordlee14/farm2market">
+            <div class="gh-repo-name">
+              <!-- Octicon repo -->
+              <svg aria-hidden="true" viewBox="0 0 16 16" width="16" height="16" class="gh-repo-icon">
+                <path fill-rule="evenodd"
+                  d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-1 1v2H2.5a.75.75 0 01-.75-.75V5h-1V2.5z">
+                </path>
+              </svg>
+              <a href="https://github.com/linfordlee14/farm2market" target="_blank"
+                rel="noopener noreferrer">FarmConnect (farm2market)</a>
+            </div>
+
+            <p class="gh-repo-description">
+              CodeCamp major project — an MVP web app for farmers to list products and connect with buyers, built with
+              Python (Flask) and a clean, responsive UI.
+            </p>
+
+            <div class="gh-repo-tags">
+              <span class="gh-tag">CodeCamp Major Project</span>
+              <span class="gh-tag">Python</span>
+              <span class="gh-tag">Flask</span>
+              <span class="gh-tag">Bootstrap</span>
+              <span class="gh-tag">Jinja2</span>
+              <span class="gh-tag">MVP</span>
+            </div>
+
+            <div class="gh-repo-meta">
+              <span class="gh-meta-item"><span class="gh-language-dot" data-lang="Python"></span> Python</span>
+              <span class="gh-meta-item">
+                <svg aria-hidden="true" viewBox="0 0 16 16" width="16" height="16" class="gh-meta-icon">
+                  <path fill-rule="evenodd"
+                    d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 13.125l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.192L.646 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z">
+                  </path>
+                </svg>
+                <span class="gh-stars">0</span>
+              </span>
+              <span class="gh-meta-item">
+                <svg aria-hidden="true" viewBox="0 0 16 16" width="16" height="16" class="gh-meta-icon">
+                  <path fill-rule="evenodd"
+                    d="M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zM6.25 7A.75.75 0 017 6.25h2A.75.75 0 019.75 7v2.872a.75.75 0 01-1.5 0V7z">
+                  </path>
+                </svg>
+                <span class="gh-forks">0</span>
+              </span>
+              <span class="gh-meta-item">Updated on Sep 12</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Achievements -->
+    <section class="section" id="achievements" style="background-color:rgb(var(--gray-100));"
+      aria-labelledby="achievements-title">
+      <div class="container">
+        <header class="section-header fade-in">
+          <span class="section-header__badge">Recognition</span>
+          <h2 class="section-header__title" id="achievements-title">Achievements</h2>
+          <p class="section-header__description">Milestones in my journey of learning, building, and making an impact.
+          </p>
+        </header>
+
+        <div
+          style="display:grid;gap:var(--space-xl);grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr));">
+          <article class="card achievement-card fade-in stagger" style="--i:0">
+            <div class="achievement-card__header">
+              <div class="achievement-card__icon"><i class="fas fa-award"></i></div>
+              <div>
+                <h3>AI for Good Recognition</h3>
+                <div class="achievement-card__year">2024</div>
+              </div>
+            </div>
+            <p class="achievement-card__description">Recognized for contribution in the AI for Connectivity Hackathon.
+              Built a solution presented at the AI for Good Global Summit.</p>
+            <button type="button" class="btn btn--secondary btn--small achievement-card__cta open-cert-modal"
+              data-title="AI for Good Recognition" data-img-path="2024 – AI for Good Recognition.jpg"
+              data-public-link="https://drive.google.com/file/d/1Fq9th3oS6xT3Ft9xIwptS3aR3h1sRkKN/view?usp=sharing">
+              View Certificate
+            </button>
+          </article>
+
+          <article class="card achievement-card fade-in stagger" style="--i:1">
+            <div class="achievement-card__header">
+              <div class="achievement-card__icon"><i class="fas fa-graduation-cap"></i></div>
+              <div>
+                <h3>ALX Data Analytics Certificate</h3>
+                <div class="achievement-card__year">2025</div>
+              </div>
+            </div>
+            <p class="achievement-card__description">Hands-on training in Python, SQL, Tableau, Power BI, and advanced
+              data analytics methodologies.</p>
+            <button type="button" class="btn btn--secondary btn--small achievement-card__cta open-cert-modal"
+              data-title="ALX Data Analytics Certificate" data-img-path="2025 – ALX Data Analytics Certificate.png"
+              data-public-link="https://savanna.alxafrica.com/certificates/NpzsH2eYSC">
+              View Certificate
+            </button>
+          </article>
+
+          <article class="card achievement-card fade-in stagger" style="--i:2">
+            <div class="achievement-card__header">
+              <div class="achievement-card__icon"><i class="fas fa-lightbulb"></i></div>
+              <div>
+                <h3>Founder Academy Graduate</h3>
+                <div class="achievement-card__year">2024</div>
+              </div>
+            </div>
+            <p class="achievement-card__description">Training in entrepreneurship & tech leadership, developing skills
+              in business strategy and innovation.</p>
+            <button type="button" class="btn btn--secondary btn--small achievement-card__cta open-cert-modal"
+              data-title="Founder Academy Graduate" data-img-path="2024 – Founder Academy.png"
+              data-public-link="https://intranet.alxswe.com/certificates/Gy2CEJXcTM">
+              View Certificate
+            </button>
+          </article>
+
+          <article class="card achievement-card fade-in stagger" style="--i:3">
+            <div class="achievement-card__header">
+              <div class="achievement-card__icon"><i class="fas fa-code"></i></div>
+              <div>
+                <h3>freeCodeCamp Responsive Web Design</h3>
+                <div class="achievement-card__year">2024</div>
+              </div>
+            </div>
+            <p class="achievement-card__description">Completed responsive, accessible design projects
+              demonstrating HTML5, CSS3, and modern web design principles.</p>
+           <button type="button" class="btn btn--secondary btn--small achievement-card__cta open-cert-modal"
+            data-title="Founder Academy Graduate" data-img-path="Responsive-web-design.jpeg"
+            data-public-link="https://www.freecodecamp.org/certification/hacker1401/responsive-web-design">
+            View Certificate
+          </button>
+        </article>
+
+          <article class="card achievement-card fade-in stagger" style="--i:4">
+            <div class="achievement-card__header">
+              <div class="achievement-card__icon"><i class="fas fa-building"></i></div>
+              <div>
+                <h3>Founder & CEO, Linfy Tech Solutions</h3>
+                <div class="achievement-card__year">Ongoing</div>
+              </div>
+            </div>
+            <p class="achievement-card__description">Provided IT consulting, web development & cybersecurity support for
+              businesses in South Africa.</p>
+            <a href="https://www.linkedin.com/company/linfy-tech-solutions" target="_blank" rel="noopener noreferrer"
+              class="btn btn--secondary btn--small achievement-card__cta">View Company</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Roadmap -->
+    <section class="section" id="roadmap" aria-labelledby="roadmap-title">
+      <div class="container">
+        <header class="section-header fade-in">
+          <span class="section-header__badge">Coming Soon</span>
+          <h2 class="section-header__title" id="roadmap-title">Roadmap</h2>
+          <p class="section-header__description">
+            Upcoming projects and initiatives that will drive innovation and social impact.
+          </p>
+        </header>
+
+        <div class="roadmap-grid">
+          <article class="card roadmap-card fade-in stagger" style="--i:0; --progress:.8">
+            <span class="roadmap-card__status" data-status="In Development" aria-label="Status: In Development">
+              <i class="fa-solid fa-hammer" aria-hidden="true"></i> In Development
+            </span>
+            <h3>HackPal X</h3>
+            <p>
+              An ethical hacking dashboard with advanced penetration testing tools, an intuitive interface, and
+              comprehensive reporting.
+            </p>
+            <div class="roadmap-card__progress" role="progressbar" aria-valuenow="80" aria-valuemin="0"
+              aria-valuemax="100"><span></span></div>
+          </article>
+
+          <article class="card roadmap-card fade-in stagger" style="--i:1; --progress:.4">
+            <span class="roadmap-card__status" data-status="Planning" aria-label="Status: Planning">
+              <i class="fa-solid fa-clipboard-list" aria-hidden="true"></i> Planning
+            </span>
+            <h3>SaveSmart App</h3>
+            <p>
+              A personal savings tool with AI-powered insights, smart budgeting, goal tracking, and financial literacy
+              features.
+            </p>
+            <div class="roadmap-card__progress" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+              aria-valuemax="100"><span></span></div>
+          </article>
+
+          <article class="card roadmap-card fade-in stagger" style="--i:2; --progress:.55">
+            <span class="roadmap-card__status" data-status="Research" aria-label="Status: Research">
+              <i class="fa-solid fa-flask" aria-hidden="true"></i> Research
+            </span>
+            <h3>Wildlife Poaching Prediction</h3>
+            <p>
+              An advanced ML model for conservation, using predictive analytics to help protect endangered species like
+              the Black Rhino.
+            </p>
+            <div class="roadmap-card__progress" role="progressbar" aria-valuenow="55" aria-valuemin="0"
+              aria-valuemax="100"><span></span></div>
+          </article>
+
+          <article class="card roadmap-card fade-in stagger" style="--i:3; --progress:.2">
+            <span class="roadmap-card__status" data-status="Concept" aria-label="Status: Concept">
+              <i class="fa-solid fa-lightbulb" aria-hidden="true"></i> Concept
+            </span>
+            <h3>Crime Data Dashboard</h3>
+            <p>
+              A social impact project analyzing crime patterns with interactive visualizations to support community
+              safety initiatives.
+            </p>
+            <div class="roadmap-card__progress" role="progressbar" aria-valuenow="20" aria-valuemin="0"
+              aria-valuemax="100"><span></span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact" style="background-color:rgb(var(--gray-100));"
+      aria-labelledby="contact-title">
+      <div class="container">
+        <header class="section-header fade-in">
+          <span class="section-header__badge">Get in Touch</span>
+          <h2 class="section-header__title" id="contact-title">Contact</h2>
+          <p class="section-header__description">Ready to collaborate? Let's discuss your next project or opportunity.
+          </p>
+        </header>
+
+        <div class="contact-grid">
+          <div class="card fade-in stagger" style="--i:0;padding:var(--space-xl)">
+            <h3>Let's Connect</h3>
+            <div style="margin-top:var(--space-xl);display:grid;gap:var(--space-md)">
+              <a href="mailto:linfordlee14@gmail.com" class="contact-info__item">
+                <div class="contact-info__icon"><i class="fas fa-envelope"></i></div>
+                <div>
+                  <div class="contact-info__label">Email</div>
+                  <div class="contact-info__value">linfordlee14@gmail.com</div>
+                </div>
+              </a>
+              <a href="https://www.linkedin.com/in/linfordlee14" target="_blank" rel="noopener noreferrer"
+                class="contact-info__item">
+                <div class="contact-info__icon"><i class="fab fa-linkedin"></i></div>
+                <div>
+                  <div class="contact-info__label">LinkedIn</div>
+                  <div class="contact-info__value">/in/linfordlee14</div>
+                </div>
+              </a>
+              <a href="https://github.com/linfordlee14" target="_blank" rel="noopener noreferrer"
+                class="contact-info__item">
+                <div class="contact-info__icon"><i class="fab fa-github"></i></div>
+                <div>
+                  <div class="contact-info__label">GitHub</div>
+                  <div class="contact-info__value">/linfordlee14</div>
+                </div>
+              </a>
+            </div>
+            <a href="resume.pdf" target="_blank" rel="noopener noreferrer" download="Linford-Musiyambodza-Resume.pdf"
+              class="btn btn--primary" style="width:100%;margin-top:var(--space-xl)"><i
+                class="fas fa-download"></i>Download Full Resume</a>
+          </div>
+
+          <form id="contact-form" class="card form fade-in stagger" style="--i:1;padding:var(--space-xl)"
+            action="https://formspree.io/f/xyzdvopj" method="POST" autocomplete="on" novalidate>
+            <div class="form__group">
+              <label for="name" class="form__label">Name</label>
+              <input type="text" id="name" name="name" class="form__input" placeholder="Your Name" required>
+            </div>
+
+            <div class="form__group">
+              <label for="email" class="form__label">Email</label>
+              <input type="email" id="email" name="email" class="form__input" placeholder="your@email.com" required>
+            </div>
+
+            <div class="form__group">
+              <label for="message" class="form__label">Message</label>
+              <textarea id="message" name="message" class="form__textarea" placeholder="Tell me about your project..."
+                required></textarea>
+            </div>
+
+            <!-- Honeypot (invisible anti-spam) -->
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"
+              style="position:absolute;left:-9999px;opacity:0" aria-hidden="true">
+
+            <!-- Niceties -->
+            <input type="hidden" name="_subject" value="New message via portfolio">
+            <input type="hidden" name="_format" value="plain">
+
+            <button id="contact-submit" type="submit" class="btn btn--primary" style="width:100%">
+              <i class="fas fa-paper-plane" aria-hidden="true"></i>
+              <span>Send Message</span>
+            </button>
+
+            <!-- Live status text -->
+            <p id="contact-status" role="status" aria-live="polite"
+              style="margin-top:var(--space-md);font-size:var(--text-sm);color:rgb(var(--gray-600))"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__logo">&lt;/&gt; Linford Musiyambodza</div>
+      <p class="footer__description">Data Analyst, Cybersecurity Enthusiast, and Founder dedicated to using technology
+        for positive impact.</p>
+      <div class="footer__socials">
+        <a href="https://www.linkedin.com/in/linfordlee14" target="_blank" rel="noopener noreferrer" class="social-link"
+          aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/linfordlee14" target="_blank" rel="noopener noreferrer" class="social-link"
+          aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="mailto:linfordlee14@gmail.com" class="social-link" aria-label="Email"><i
+            class="fas fa-envelope"></i></a>
+      </div>
+      <div class="footer__copyright">&copy; <span id="year"></span> Linford Musiyambodza. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Certificate Modal -->
+  <dialog id="cert-modal" class="cert-modal" aria-labelledby="cert-modal-title">
+    <header class="cert-modal__header">
+      <h3 id="cert-modal-title" class="cert-modal__title">Certificate</h3>
+      <button id="cert-modal-close-btn" class="cert-modal__close-btn" aria-label="Close dialog"><i
+          class="fas fa-xmark"></i></button>
+    </header>
+    <div class="cert-modal__body">
+      <div id="cert-spinner" class="spinner" role="status" aria-live="polite" aria-label="Loading certificate"
+        aria-hidden="true"></div>
+      <img id="cert-modal-img" class="cert-modal__img" src="" alt="Certificate image." hidden>
+      <div id="cert-fallback" class="modal-fallback" hidden>Preview unavailable — use “View Original”.</div>
+      <div id="cert-meta" class="cert-meta" hidden></div>
+    </div>
+    <footer class="cert-modal__footer">
+      <div class="btn-group">
+        <button id="copy-link" class="btn btn--secondary btn--small" type="button" aria-label="Copy original link"><i
+            class="fas fa-link"></i>Copy Link</button>
+        <a id="cert-modal-link" href="#" class="btn btn--primary" target="_blank" rel="noopener noreferrer"><i
+            class="fas fa-up-right-from-square"></i>View Original</a>
+      </div>
+    </footer>
+  </dialog>
+
+  <script>
+    'use strict';
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+    $('#year').textContent = new Date().getFullYear();
+
+    /* === Theme toggle with View Transitions (replaces previous handler) === */
+    (function () {
+      const themeToggle = document.querySelector('.theme-toggle');
+      const setPressed = () => themeToggle?.setAttribute('aria-pressed', String(document.documentElement.getAttribute('data-theme') === 'dark'));
+      function flipTheme() {
+        const next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch { }
+        setPressed();
+      }
+      setPressed();
+      themeToggle?.addEventListener('click', () => {
+        if (document.startViewTransition) {
+          document.startViewTransition(() => flipTheme());
+        } else {
+          flipTheme();
+        }
+      });
+    })();
+
+    /* Navbar scroll + mobile menu + top progress */
+    const navbar = $('.navbar');
+    const mobileToggle = $('.mobile-toggle');
+    const navMenu = $('#primary-navigation');
+
+    // Inject page progress bar
+    const _pg = document.createElement('div');
+    _pg.className = 'page-progress';
+    document.body.appendChild(_pg);
+
+    function onScroll() {
+      navbar?.classList.toggle('scrolled', window.scrollY > 50);
+      const h = document.documentElement;
+      const p = (h.scrollTop || document.body.scrollTop) / ((h.scrollHeight - h.clientHeight) || 1);
+      document.body.style.setProperty('--scrollProgress', String(p));
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('load', onScroll);
+
+    function closeMenu() {
+      mobileToggle?.classList.remove('active');
+      navMenu?.classList.remove('active');
+      navbar?.classList.remove('has-backdrop');
+      document.body.classList.remove('menu-open');
+      mobileToggle?.setAttribute('aria-expanded', 'false');
+    }
+    mobileToggle?.addEventListener('click', () => {
+      const isActive = mobileToggle.classList.toggle('active');
+      navMenu?.classList.toggle('active', isActive);
+      navbar?.classList.toggle('has-backdrop', isActive);
+      document.body.classList.toggle('menu-open', isActive);
+      mobileToggle.setAttribute('aria-expanded', String(isActive));
+    });
+
+    /* Smooth scroll + active link */
+    const sections = $$('main section[id]');
+    const navLinks = $$('.navbar__link');
+    const sectionTopOffset = () => navbar.offsetHeight + 20;
+
+    function highlightNav() {
+      let current = '';
+      sections.forEach(section => {
+        const top = section.offsetTop - sectionTopOffset();
+        if (window.scrollY >= top) current = section.id;
+      });
+      navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${current}`));
+    }
+    $$('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        if (!id || id === '#') return;
+        e.preventDefault();
+        $(id)?.scrollIntoView({ behavior: 'smooth' });
+        if (navMenu.classList.contains('active')) closeMenu();
+      });
+    });
+    window.addEventListener('scroll', highlightNav, { passive: true });
+    window.addEventListener('load', highlightNav);
+
+    /* IntersectionObserver for staged fades */
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .1, rootMargin: '0px 0px -50px 0px' });
+    $$('.fade-in').forEach(el => { el.style.animationPlayState = 'paused'; io.observe(el); });
+
+    /* === Animated numbers for stats (only elements with data-count) === */
+    (function () {
+      const _countEls = [...document.querySelectorAll('.stat__value[data-count]')];
+      if (!_countEls.length) return;
+      const _fmt = n => new Intl.NumberFormat().format(Math.round(n));
+      const _obs = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          const target = Number(el.dataset.count);
+          const start = performance.now(); const dur = 900 + (target > 100 ? 300 : 0);
+          function tick(t) {
+            const k = Math.min(1, (t - start) / dur);
+            const ease = (1 - Math.pow(1 - k, 3)); // easeOutCubic
+            el.textContent = _fmt(target * ease);
+            if (k < 1) requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+          _obs.unobserve(el);
+        });
+      }, { threshold: .6 });
+      _countEls.forEach(el => _obs.observe(el));
+    })();
+
+    /* === Pointer-tracked glow for card-like components === */
+    document.addEventListener('pointermove', (e) => {
+      const t = e.target.closest('.card, .roadmap-card, .achievement-card');
+      if (!t) return;
+      const r = t.getBoundingClientRect();
+      t.style.setProperty('--x', (e.clientX - r.left) + 'px');
+      t.style.setProperty('--y', (e.clientY - r.top) + 'px');
+    }, { passive: true });
+
+    /* =================== Certificate Modal Logic =================== */
+    const certModal = $('#cert-modal');
+    const certTitle = $('#cert-modal-title');
+    const certImg = $('#cert-modal-img');
+    const certLink = $('#cert-modal-link');
+    const copyLinkBtn = $('#copy-link');
+    const certClose = $('#cert-modal-close-btn');
+    const certSpinner = $('#cert-spinner');
+    const certFallback = $('#cert-fallback');
+    const certMeta = $('#cert-meta');
+
+    const lockScroll = (locked) => document.documentElement.classList.toggle('no-scroll', locked);
+
+    function openCert({ title, imgPath, publicLink }) {
+      certTitle.textContent = title || 'Certificate';
+
+      // Link state + meta text
+      if (publicLink) {
+        certLink.href = publicLink;
+        certLink.removeAttribute('aria-disabled');
+        certLink.removeAttribute('tabindex');
+        try {
+          const url = new URL(publicLink);
+          certMeta.hidden = false;
+          certMeta.textContent = `Source: ${url.hostname}${url.pathname}`;
+        } catch {
+          certMeta.hidden = false;
+          certMeta.textContent = `Source: ${publicLink}`;
+        }
+      } else {
+        certLink.href = '#';
+        certLink.setAttribute('aria-disabled', 'true');
+        certLink.setAttribute('tabindex', '-1');
+        certMeta.hidden = true;
+        certMeta.textContent = '';
+      }
+
+      // Reset UI
+      certImg.hidden = true;
+      certFallback.hidden = true;
+      certSpinner.style.display = 'inline-block';
+
+      // Safe-encode path (handles spaces & en-dash)
+      const safeSrc = imgPath ? encodeURI(imgPath) : '';
+
+      certImg.onload = () => {
+        certSpinner.style.display = 'none';
+        certFallback.hidden = true;
+        certImg.hidden = false;
+      };
+      certImg.onerror = () => {
+        certSpinner.style.display = 'none';
+        certImg.hidden = true;
+        certFallback.hidden = false;
+      };
+
+      certImg.src = safeSrc || '';
+
+      // Open dialog with guard + scroll lock
+      try { if (!certModal.open) certModal.showModal(); } catch { certModal.setAttribute('open', ''); }
+      lockScroll(true);
+    }
+
+    // Openers
+    $$('.open-cert-modal').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const { title, imgPath, publicLink } = btn.dataset;
+        openCert({ title, imgPath, publicLink });
+      });
+    });
+
+    // Robust new-tab open for "View Original"
+    certLink.addEventListener('click', (e) => {
+      const href = certLink.getAttribute('href');
+      if (!href || href === '#') { e.preventDefault(); return; }
+      e.preventDefault();
+      window.open(href, '_blank', 'noopener');
+    });
+
+    // Copy link UX
+    copyLinkBtn.addEventListener('click', async () => {
+      const href = certLink.getAttribute('href');
+      if (!href || href === '#') return;
+      try {
+        await navigator.clipboard.writeText(href);
+        const original = copyLinkBtn.innerHTML;
+        copyLinkBtn.innerHTML = '<i class="fas fa-check"></i>Copied';
+        setTimeout(() => (copyLinkBtn.innerHTML = original), 1200);
+      } catch {
+        if (!certMeta.hidden) {
+          const range = document.createRange();
+          range.selectNodeContents(certMeta);
+          const sel = window.getSelection();
+          sel.removeAllRanges(); sel.addRange(range);
+        }
+      }
+    });
+
+    // Close with animation
+    function closeCertAnimated() {
+      if (!certModal.open) return;
+      certModal.classList.add('closing');
+      const finish = () => {
+        certModal.classList.remove('closing');
+        if (typeof certModal.close === 'function') certModal.close(); else certModal.removeAttribute('open');
+        certImg.removeAttribute('src');
+        certSpinner.style.display = 'none';
+        certFallback.hidden = true;
+        certImg.hidden = true;
+        lockScroll(false);
+        certModal.removeEventListener('animationend', finish);
+      };
+      certModal.addEventListener('animationend', finish);
+    }
+    certClose.addEventListener('click', closeCertAnimated);
+    certModal.addEventListener('click', (e) => { if (e.target === certModal) closeCertAnimated(); });
+    certModal.addEventListener('cancel', (e) => { e.preventDefault(); closeCertAnimated(); }); // ESC
+    certModal.addEventListener('close', () => lockScroll(false));
+
+    /* === Contact form: Formspree + graceful fallbacks === */
+    (() => {
+      const form = document.getElementById('contact-form');
+      if (!form) return;
+      const btn = document.getElementById('contact-submit');
+      const status = document.getElementById('contact-status');
+
+      function setBusy(isBusy, labelDuring = 'Sending…') {
+        if (!btn) return;
+        btn.disabled = isBusy;
+        const icon = btn.querySelector('i');
+        const span = btn.querySelector('span');
+        if (icon) icon.className = isBusy ? 'fas fa-spinner fa-spin' : 'fas fa-paper-plane';
+        if (span) span.textContent = isBusy ? labelDuring : 'Send Message';
+      }
+
+      function say(msg, ok = false) {
+        status.textContent = msg;
+        status.style.color = ok ? 'rgb(var(--color-accent))' : 'rgb(var(--gray-600))';
+      }
+
+      function mailtoFallback(fd) {
+        const name = encodeURIComponent(fd.get('name') || '');
+        const email = encodeURIComponent(fd.get('email') || '');
+        const message = encodeURIComponent(fd.get('message') || '');
+        const subject = encodeURIComponent('New message via portfolio');
+        const body = encodeURIComponent(`From: ${name} <${email}>\n\n${message}`);
+        window.location.href = `mailto:linfordlee14@gmail.com?subject=${subject}&body=${body}`;
+      }
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+        setBusy(true); say('Sending your message…');
+
+        const fd = new FormData(form);
+        try {
+          const res = await fetch(form.action, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } });
+          if (res.ok) {
+            form.reset();
+            setBusy(false); say('Thanks! Your message was sent successfully.', true);
+            btn.disabled = true; btn.querySelector('span').textContent = 'Sent ✓';
+          } else {
+            setBusy(false); say('Hmm, something went wrong. Trying email client…'); mailtoFallback(fd);
+          }
+        } catch {
+          setBusy(false); say('Offline or blocked by a network policy. Opening your email app…'); mailtoFallback(fd);
+        }
+      }, { passive: false });
+    })();
+
+    /* === Live hydrate stars/forks for repo cards === */
+    async function hydrateRepoCard(card) {
+      const repo = card.dataset.repo; if (!repo) return;
+      const starsEl = card.querySelector('.gh-stars');
+      const forksEl = card.querySelector('.gh-forks');
+      try {
+        const r = await fetch(`https://api.github.com/repos/${repo}`, { headers: { 'Accept': 'application/vnd.github+json' } });
+        if (!r.ok) return;
+        const d = await r.json();
+        if (starsEl) starsEl.textContent = new Intl.NumberFormat().format(d.stargazers_count ?? 0);
+        if (forksEl) forksEl.textContent = new Intl.NumberFormat().format(d.forks_count ?? 0);
+      } catch { }
+    }
+    document.querySelectorAll('[data-repo]').forEach(hydrateRepoCard);
+
+    /* === Floating "Back to top" button (auto) === */
+    (function () {
+      const btn = document.createElement('button');
+      btn.className = 'to-top'; btn.setAttribute('aria-label', 'Back to top');
+      btn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+      document.body.appendChild(btn);
+      btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      window.addEventListener('scroll', () => btn.classList.toggle('show', window.scrollY > 600), { passive: true });
+    })();
+  </script>
+</body>
+
+</html>
