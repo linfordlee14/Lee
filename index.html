@@ -2693,25 +2693,60 @@
     'use strict';
 
     window.__LINFORD_PROFILE__ = {
-      name: "Linford Musiyambodza",
-      role: "Data Analyst | Cybersecurity Enthusiast | Founder of Linfy Tech Solutions",
-      location: "Cape Town",
-      email: "linfordlee14@gmail.com",
-      resume: "resume.pdf",
-      bio: "I use technology, data, and AI to build solutions that help businesses and support global challenges like wildlife conservation.",
-      links: {
+      hero: {
+        name: "Linford Musiyambodza",
+        role: "Full-Stack Developer, Cybersecurity Specialist & Tech Founder",
+        tagline: "Building secure, data-driven AI solutions for African businesses and wildlife conservation.",
+        location: "Strand, Cape Town, South Africa"
+      },
+      about: {
+        bio: "I’m a self-taught full-stack developer and the Founder & CEO of Linfy Tech Solutions, as well as the CTO & Co-Founder at NeuroGrowth Labs. I specialize in web development, cybersecurity, and data analytics. My mission is to bridge the gap between technology and people—whether that's through building enterprise ops systems, developing accessible ed-tech for local youth, or creating AI models to protect endangered species like the Black Rhino.",
+        current_focus: [
+          "Scaling AI enterprise tools at NeuroGrowth Labs",
+          "Building the low-bandwidth Linfy Tech Youth Platform",
+          "Advancing my skills in ethical hacking and digital resilience"
+        ]
+      },
+      experience: [
+        {
+          role: "Chief Technology Officer (CTO) & Co-Founder",
+          company: "NeuroGrowth Labs",
+          date: "Jan 2026 – Present",
+          description: "Leading the technology strategy for a startup focused on delivering cutting-edge, AI-powered enterprise operations systems for governments and private companies."
+        },
+        {
+          role: "Founder & CEO",
+          company: "Linfy Tech Solutions",
+          date: "Oct 2024 – Present",
+          description: "Providing comprehensive IT consulting, including cybersecurity triage, web development, and data analytics to help businesses secure their digital presence."
+        }
+      ],
+      education_and_programs: [
+        "ALX Africa - Data Science",
+        "Aspire Institute - Cohort 1",
+        "B.Sc. in Data Science (Ongoing)"
+      ],
+      projects: [
+        {
+          title: "Linfy Tech Youth Platform",
+          status: "MVP in Progress",
+          description: "A mobile-first, offline-friendly mentorship hub designed to teach coding, AI, and cybersecurity to youth in low-bandwidth areas.",
+          stack: ["React", "AI", "Mobile-First"]
+        },
+        {
+          title: "Wildlife Conservation Models",
+          status: "Ongoing",
+          description: "AI-driven predictive models and data analytics designed to support the conservation of endangered species like the Black Rhino.",
+          stack: ["Python", "Data Analytics", "Machine Learning"]
+        }
+      ],
+      contact: {
         github: "https://github.com/linfordlee14",
         linkedin: "https://www.linkedin.com/in/linfordlee14",
-        company: "https://www.linkedin.com/company/linfy-tech-solutions",
-        mainPortfolio: "https://linford-musiyambodza.vercel.app/",
-        freelancePortfolio: "https://linford-freelancer.netlify.app/",
-        cybersecurityPortfolio: "https://linford-cyber.netlify.app/"
+        website: "https://linford.linfytech.xyz",
+        email: "linfordlee14@gmail.com"
       },
-      spaces: {
-        main: "https://linford-musiyambodza.vercel.app/",
-        freelance: "https://linford-freelancer.netlify.app/",
-        cyber: "https://linford-cyber.netlify.app/"
-      }
+      resume: "resume.pdf"
     };
     const $ = (s, r = document) => r.querySelector(s);
     const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -2719,17 +2754,26 @@
 
     (() => {
       const profile = window.__LINFORD_PROFILE__ || {};
-      const links = profile.links || {};
-      const spaces = profile.spaces || {};
+      const hero = profile.hero || {};
+      const about = profile.about || {};
+      const experience = profile.experience || [];
+      const education = profile.education_and_programs || [];
+      const projects = profile.projects || [];
+      const contact = profile.contact || {};
+
+      const heroBadge = $('.hero__badge');
+      if (heroBadge && hero.location) {
+        heroBadge.innerHTML = `<i class="fas fa-location-dot" aria-hidden="true"></i>${hero.location}`;
+      }
 
       const heroTitle = $('#hero-title');
-      if (heroTitle && profile.name) {
-        heroTitle.innerHTML = `Hi, I'm <span>${profile.name}</span>`;
+      if (heroTitle && hero.name) {
+        heroTitle.innerHTML = `Hi, I'm <span>${hero.name}</span>`;
       }
 
       const heroDesc = $('.hero__description');
-      if (heroDesc && profile.role && profile.bio) {
-        heroDesc.textContent = `${profile.role}. ${profile.bio}`;
+      if (heroDesc && hero.role && hero.tagline) {
+        heroDesc.textContent = `${hero.role}. ${hero.tagline}`;
       }
 
       const resumeLinks = $$('a[href="resume.pdf"]');
@@ -2739,32 +2783,75 @@
 
       const emailLinks = $$('a[href^="mailto:"]');
       emailLinks.forEach((link) => {
-        if (profile.email) link.setAttribute('href', `mailto:${profile.email}`);
+        if (contact.email) link.setAttribute('href', `mailto:${contact.email}`);
       });
 
       const emailValue = $('.contact-info__value');
-      if (emailValue && profile.email) emailValue.textContent = profile.email;
+      if (emailValue && contact.email) emailValue.textContent = contact.email;
 
       const linkedinLinks = $$('a[href*="linkedin.com/in/"]');
       linkedinLinks.forEach((link) => {
-        if (links.linkedin) link.setAttribute('href', links.linkedin);
+        if (contact.linkedin) link.setAttribute('href', contact.linkedin);
       });
 
       const githubLinks = $$('a[href*="github.com/linfordlee14"]');
       githubLinks.forEach((link) => {
-        if (links.github) link.setAttribute('href', links.github);
+        if (contact.github) link.setAttribute('href', contact.github);
       });
 
-      const companyLinks = $$('a[href*="linkedin.com/company/linfy-tech-solutions"]');
-      companyLinks.forEach((link) => {
-        if (links.company) link.setAttribute('href', links.company);
+      const footerLogo = $('.footer__logo');
+      if (footerLogo && hero.name) footerLogo.textContent = `</> ${hero.name}`;
+
+      const footerDescription = $('.footer__description');
+      if (footerDescription && hero.role && hero.tagline) {
+        footerDescription.textContent = `${hero.role}. ${hero.tagline}`;
+      }
+
+      const aboutDescription = $('#spaces')?.previousElementSibling?.querySelector?.('.section-header__description');
+      if (aboutDescription && about.bio) {
+        aboutDescription.textContent = about.bio;
+      }
+
+      const projectCards = $$('#projects .gh-repo-item');
+      projects.forEach((project, index) => {
+        const card = projectCards[index];
+        if (!card) return;
+        const titleLink = card.querySelector('.gh-repo-name a');
+        const desc = card.querySelector('.gh-repo-description');
+        const tags = card.querySelector('.gh-repo-tags');
+        if (titleLink && project.title) titleLink.textContent = project.title;
+        if (desc && project.description) desc.textContent = project.description;
+        if (tags && Array.isArray(project.stack)) {
+          tags.innerHTML = project.stack.map((item) => `<span class="gh-tag">${item}</span>`).join('');
+          if (project.status) tags.insertAdjacentHTML('afterbegin', `<span class="gh-tag">${project.status}</span>`);
+        }
       });
 
-      const spaceButtons = $('#spaces')?.querySelectorAll('a.btn');
-      if (spaceButtons && spaceButtons.length >= 3) {
-        if (spaces.main) spaceButtons[0].setAttribute('href', spaces.main);
-        if (spaces.freelance) spaceButtons[1].setAttribute('href', spaces.freelance);
-        if (spaces.cyber) spaceButtons[2].setAttribute('href', spaces.cyber);
+      const roadmapCards = $$('#roadmap .roadmap-card');
+      projects.forEach((project, index) => {
+        const card = roadmapCards[index];
+        if (!card) return;
+        const title = card.querySelector('h3');
+        const desc = card.querySelector('p');
+        const status = card.querySelector('.roadmap-card__status');
+        if (title && project.title) title.textContent = project.title;
+        if (desc && project.description) desc.textContent = project.description;
+        if (status && project.status) status.innerHTML = `<i class="fa-solid fa-lightbulb" aria-hidden="true"></i> ${project.status}`;
+      });
+
+      const achievementSection = $('#achievements .section-header__description');
+      if (achievementSection && education.length) {
+        achievementSection.textContent = `Current education and programs include ${education.join(', ')}.`;
+      }
+
+      const contactTitle = $('#contact-title');
+      if (contactTitle && contact.website) {
+        contactTitle.textContent = 'Contact';
+      }
+
+      const contactDescription = $('#contact .section-header__description');
+      if (contactDescription && contact.website) {
+        contactDescription.textContent = `Reach out directly or explore more at ${contact.website}.`;
       }
     })();
 
