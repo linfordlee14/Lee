@@ -1938,6 +1938,77 @@
           bottom: .75rem;
         }
       }
+
+      @media (max-width: 768px) {
+        #spaces .container > div[style*='display: flex'] {
+          gap: 1rem !important;
+        }
+
+        #spaces .container > div[style*='display: flex'] > a {
+          width: 100%;
+          min-width: 0 !important;
+          margin: 0 !important;
+        }
+
+        .gh-repo-item {
+          padding: .9rem 0;
+        }
+
+        .gh-repo-description {
+          -webkit-line-clamp: 3;
+          line-height: 1.6;
+        }
+
+        .gh-repo-meta {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          align-items: start;
+        }
+
+        .achievement-card,
+        .roadmap-card,
+        #contact .card {
+          padding: var(--space-lg) !important;
+        }
+
+        .achievement-card__icon {
+          width: 2.5rem;
+          height: 2.5rem;
+        }
+
+        .contact-grid {
+          gap: var(--space-lg);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .gh-repo-meta {
+          grid-template-columns: 1fr;
+          gap: .5rem;
+        }
+
+        .achievement-card,
+        .roadmap-card,
+        #contact .card {
+          padding: var(--space-md) !important;
+        }
+
+        .achievement-card__header {
+          gap: .75rem;
+        }
+
+        .roadmap-grid {
+          gap: var(--space-lg);
+        }
+
+        .contact-info__item {
+          padding: .875rem;
+        }
+
+        .footer {
+          padding-block: var(--space-2xl) var(--space-lg);
+        }
+      }
     }
   </style>
 </head>
