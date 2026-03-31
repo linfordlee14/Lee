@@ -507,6 +507,12 @@
       max-width: 70ch;
       margin-inline: auto;
     }
+
+    @media (min-width: 1100px) {
+      .section-header {
+        margin-bottom: 4.5rem;
+      }
+    }
     .section-header__badge {
       display: inline-block;
       padding: var(--space-xs) var(--space-md);
@@ -545,12 +551,29 @@
       gap: var(--space-xl);
     }
 
+    @media (min-width: 1100px) {
+      .spaces-grid,
+      .experience-grid,
+      .projects-grid,
+      .education-grid,
+      .focus-grid,
+      .contact-grid {
+        gap: 1.5rem;
+      }
+    }
+
     .spaces-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
     .experience-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
     .projects-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
     .education-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
     .focus-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
     .contact-grid { grid-template-columns: 1fr 1.2fr; align-items: start; }
+
+    @media (min-width: 1100px) {
+      .contact-grid {
+        grid-template-columns: .95fr 1.25fr;
+      }
+    }
 
     .space-card,
     .experience-card,
@@ -561,6 +584,17 @@
       padding: var(--space-xl);
     }
 
+    @media (min-width: 1100px) {
+      .space-card,
+      .experience-card,
+      .project-card,
+      .education-card,
+      .focus-card,
+      .contact-panel {
+        padding: 1.9rem;
+      }
+    }
+
     .space-card h3,
     .experience-card h3,
     .project-card h3,
@@ -568,6 +602,17 @@
     .focus-card h3,
     .contact-panel h3 {
       margin-bottom: var(--space-sm);
+    }
+
+    @media (min-width: 1100px) {
+      .space-card h3,
+      .experience-card h3,
+      .project-card h3,
+      .education-card h3,
+      .focus-card h3,
+      .contact-panel h3 {
+        font-size: 1.65rem;
+      }
     }
 
     .space-card p,
@@ -595,11 +640,24 @@
       font-weight: 600;
     }
 
+    @media (min-width: 1100px) {
+      .project-card__meta,
+      .experience-card__meta {
+        margin-bottom: 1.1rem;
+      }
+    }
+
     .chip-list {
       display: flex;
       flex-wrap: wrap;
       gap: .5rem;
       margin-top: var(--space-md);
+    }
+
+    @media (min-width: 1100px) {
+      .chip-list {
+        gap: .6rem;
+      }
     }
 
     .chip {
@@ -704,6 +762,12 @@
       padding-block: var(--space-3xl) var(--space-xl);
       margin-top: var(--space-4xl);
       text-align: center;
+    }
+
+    @media (min-width: 1100px) {
+      .footer {
+        margin-top: 5rem;
+      }
     }
     .footer__logo {
       font-family: var(--font-display);
