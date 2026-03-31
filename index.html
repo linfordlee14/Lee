@@ -1794,12 +1794,39 @@
 
         .hero {
           min-height: auto;
-          padding-top: 5.5rem;
+          padding-top: 6.75rem;
           padding-bottom: 2.5rem;
         }
 
         .hero__grid {
           gap: var(--space-xl);
+          grid-template-columns: 1fr;
+        }
+
+        .hero__content,
+        .hero__visual {
+          width: 100%;
+          max-width: 100%;
+        }
+
+        .hero__title {
+          font-size: clamp(2.2rem, 9vw, 3.2rem);
+          line-height: 1.08;
+        }
+
+        .hero__description {
+          font-size: var(--text-base);
+          max-width: 100%;
+        }
+
+        .hero__image-wrapper {
+          max-width: min(100%, 22rem);
+          margin-inline: auto;
+        }
+
+        .hero__image-wrapper img {
+          aspect-ratio: 1 / 1.15;
+          object-position: center top;
         }
 
         .hero__actions,
@@ -1819,7 +1846,6 @@
           justify-content: stretch;
         }
 
-        .hero__description,
         .section-header__description,
         .project-card__description,
         .achievement-card__description,
@@ -1830,6 +1856,7 @@
 
         .hero__stats {
           grid-template-columns: repeat(2, minmax(0, 1fr));
+          width: 100%;
         }
 
         .roadmap-grid {
@@ -1860,6 +1887,20 @@
       }
 
       @media (max-width: 560px) {
+        .hero {
+          padding-top: 6.25rem;
+        }
+
+        .hero__title {
+          font-size: clamp(1.95rem, 10vw, 2.6rem);
+        }
+
+        .hero__badge {
+          font-size: var(--text-xs);
+          padding-inline: var(--space-md);
+          text-align: center;
+        }
+
         .hero__stats {
           grid-template-columns: 1fr;
         }
