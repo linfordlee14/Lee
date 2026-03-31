@@ -41,8 +41,7 @@
   <!-- Preconnects -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-
+  
   <!-- Icons & Fonts -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -155,6 +154,12 @@
           animation-iteration-count: 1 !important;
           transition-duration: .01ms !important;
           scroll-behavior: auto !important;
+        }
+
+        .hero__bg::before,
+        .hero__badge,
+        .achievement-card__icon {
+          animation: none !important;
         }
       }
 
@@ -651,7 +656,7 @@
           radial-gradient(circle at 20% 80%, rgb(var(--color-accent)/.08) 0%, transparent 50%),
           radial-gradient(circle at 80% 20%, rgb(var(--color-secondary)/.06) 0%, transparent 50%),
           radial-gradient(circle at 40% 40%, rgb(var(--color-primary)/.04) 0%, transparent 50%);
-        animation: gradientShift 20s ease infinite;
+        animation: gradientShift 28s ease infinite;
       }
 
       @keyframes gradientShift {
@@ -704,7 +709,7 @@
         border-radius: var(--radius-full);
         font-size: var(--text-sm);
         font-weight: 600;
-        animation: pulse 2.5s ease-in-out infinite
+        animation: pulse 4s ease-in-out infinite
       }
 
       @keyframes pulse {
@@ -1171,7 +1176,7 @@
         display: grid;
         place-items: center;
         color: #fff;
-        animation: float 3s ease-in-out infinite
+        animation: float 5s ease-in-out infinite
       }
 
       @keyframes float {
@@ -2160,8 +2165,7 @@
 
           <div class="hero__visual fade-in" style="--i:1">
             <div class="hero__image-wrapper">
-              <img src="founder.jpg" alt="Portrait of Linford Musiyambodza, Founder of Linfy Tech Solutions." width="454" height="550"
-                loading="eager">
+              <img src="founder.jpg" alt="Portrait of Linford Musiyambodza, Founder of Linfy Tech Solutions." width="454" height="550" loading="eager" decoding="async" fetchpriority="high">
             </div>
             <div class="hero__stats">
               <div class="stat stagger" style="--i:0">
@@ -2687,6 +2691,22 @@
 
   <script>
     'use strict';
+
+    window.__LINFORD_PROFILE__ = {
+      name: "Linford Musiyambodza",
+      role: "Data Analyst | Cybersecurity Enthusiast | Founder of Linfy Tech Solutions",
+      location: "Cape Town",
+      email: "linfordlee14@gmail.com",
+      resume: "resume.pdf",
+      links: {
+        github: "https://github.com/linfordlee14",
+        linkedin: "https://www.linkedin.com/in/linfordlee14",
+        company: "https://www.linkedin.com/company/linfy-tech-solutions",
+        mainPortfolio: "https://linford-musiyambodza.vercel.app/",
+        freelancePortfolio: "https://linford-freelancer.netlify.app/",
+        cybersecurityPortfolio: "https://linford-cyber.netlify.app/"
+      }
+    };
     const $ = (s, r = document) => r.querySelector(s);
     const $$ = (s, r = document) => [...r.querySelectorAll(s)];
     $('#year').textContent = new Date().getFullYear();
@@ -2806,13 +2826,15 @@
     })();
 
     /* === Pointer-tracked glow for card-like components === */
-    document.addEventListener('pointermove', (e) => {
-      const t = e.target.closest('.card, .roadmap-card, .achievement-card');
-      if (!t) return;
-      const r = t.getBoundingClientRect();
-      t.style.setProperty('--x', (e.clientX - r.left) + 'px');
-      t.style.setProperty('--y', (e.clientY - r.top) + 'px');
-    }, { passive: true });
+    if (window.matchMedia('(pointer:fine)').matches) {
+      document.addEventListener('pointermove', (e) => {
+        const t = e.target.closest('.card, .roadmap-card, .achievement-card');
+        if (!t) return;
+        const r = t.getBoundingClientRect();
+        t.style.setProperty('--x', (e.clientX - r.left) + 'px');
+        t.style.setProperty('--y', (e.clientY - r.top) + 'px');
+      }, { passive: true });
+    }
 
     /* =================== Certificate Modal Logic =================== */
     const certModal = $('#cert-modal');
@@ -2997,7 +3019,19 @@
         if (forksEl) forksEl.textContent = new Intl.NumberFormat().format(d.forks_count ?? 0);
       } catch { }
     }
-    document.querySelectorAll('[data-repo]').forEach(hydrateRepoCard);
+    const repoCards = document.querySelectorAll('[data-repo]');
+    if ('IntersectionObserver' in window) {
+      const repoObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          hydrateRepoCard(entry.target);
+          observer.unobserve(entry.target);
+        });
+      }, { rootMargin: '200px 0px' });
+      repoCards.forEach((card) => repoObserver.observe(card));
+    } else {
+      repoCards.forEach(hydrateRepoCard);
+    }
 
     /* === Floating "Back to top" button (auto) === */
     (function () {
