@@ -2698,6 +2698,7 @@
       location: "Cape Town",
       email: "linfordlee14@gmail.com",
       resume: "resume.pdf",
+      bio: "I use technology, data, and AI to build solutions that help businesses and support global challenges like wildlife conservation.",
       links: {
         github: "https://github.com/linfordlee14",
         linkedin: "https://www.linkedin.com/in/linfordlee14",
@@ -2705,11 +2706,67 @@
         mainPortfolio: "https://linford-musiyambodza.vercel.app/",
         freelancePortfolio: "https://linford-freelancer.netlify.app/",
         cybersecurityPortfolio: "https://linford-cyber.netlify.app/"
+      },
+      spaces: {
+        main: "https://linford-musiyambodza.vercel.app/",
+        freelance: "https://linford-freelancer.netlify.app/",
+        cyber: "https://linford-cyber.netlify.app/"
       }
     };
     const $ = (s, r = document) => r.querySelector(s);
     const $$ = (s, r = document) => [...r.querySelectorAll(s)];
     $('#year').textContent = new Date().getFullYear();
+
+    (() => {
+      const profile = window.__LINFORD_PROFILE__ || {};
+      const links = profile.links || {};
+      const spaces = profile.spaces || {};
+
+      const heroTitle = $('#hero-title');
+      if (heroTitle && profile.name) {
+        heroTitle.innerHTML = `Hi, I'm <span>${profile.name}</span>`;
+      }
+
+      const heroDesc = $('.hero__description');
+      if (heroDesc && profile.role && profile.bio) {
+        heroDesc.textContent = `${profile.role}. ${profile.bio}`;
+      }
+
+      const resumeLinks = $$('a[href="resume.pdf"]');
+      resumeLinks.forEach((link) => {
+        if (profile.resume) link.setAttribute('href', profile.resume);
+      });
+
+      const emailLinks = $$('a[href^="mailto:"]');
+      emailLinks.forEach((link) => {
+        if (profile.email) link.setAttribute('href', `mailto:${profile.email}`);
+      });
+
+      const emailValue = $('.contact-info__value');
+      if (emailValue && profile.email) emailValue.textContent = profile.email;
+
+      const linkedinLinks = $$('a[href*="linkedin.com/in/"]');
+      linkedinLinks.forEach((link) => {
+        if (links.linkedin) link.setAttribute('href', links.linkedin);
+      });
+
+      const githubLinks = $$('a[href*="github.com/linfordlee14"]');
+      githubLinks.forEach((link) => {
+        if (links.github) link.setAttribute('href', links.github);
+      });
+
+      const companyLinks = $$('a[href*="linkedin.com/company/linfy-tech-solutions"]');
+      companyLinks.forEach((link) => {
+        if (links.company) link.setAttribute('href', links.company);
+      });
+
+      const spaceButtons = $('#spaces')?.querySelectorAll('a.btn');
+      if (spaceButtons && spaceButtons.length >= 3) {
+        if (spaces.main) spaceButtons[0].setAttribute('href', spaces.main);
+        if (spaces.freelance) spaceButtons[1].setAttribute('href', spaces.freelance);
+        if (spaces.cyber) spaceButtons[2].setAttribute('href', spaces.cyber);
+      }
+    })();
 
     /* === Theme toggle with View Transitions (replaces previous handler) === */
     (function () {
