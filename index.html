@@ -1764,6 +1764,139 @@
           opacity: 1
         }
       }
+
+      @media (max-width: 900px) {
+        .hero__stats {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .contact-grid,
+        .about-grid,
+        .section-head,
+        .summary-grid,
+        .services-grid,
+        .proof-grid,
+        .testimonials-grid,
+        .contact-card {
+          grid-template-columns: 1fr !important;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          --_padding: 1rem;
+          width: min(100% - 2rem, var(--container-max-width));
+        }
+
+        .section {
+          padding-block: clamp(2.5rem, 9vw, 4rem);
+        }
+
+        .hero {
+          min-height: auto;
+          padding-top: 5.5rem;
+          padding-bottom: 2.5rem;
+        }
+
+        .hero__grid {
+          gap: var(--space-xl);
+        }
+
+        .hero__actions,
+        .btn-group,
+        .contact-actions,
+        .btn-group .btn,
+        .hero__actions .btn,
+        .contact-actions .btn {
+          width: 100%;
+        }
+
+        .hero__actions,
+        .btn-group,
+        .contact-actions {
+          flex-direction: column;
+          align-items: stretch;
+          justify-content: stretch;
+        }
+
+        .hero__description,
+        .section-header__description,
+        .project-card__description,
+        .achievement-card__description,
+        .roadmap-card p,
+        .contact-info__value {
+          font-size: var(--text-base);
+        }
+
+        .hero__stats {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .roadmap-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .gh-repo-name {
+          align-items: flex-start;
+          flex-wrap: wrap;
+        }
+
+        .gh-repo-meta {
+          gap: .75rem;
+        }
+
+        .achievement-card__header,
+        .contact-info__item {
+          align-items: flex-start;
+        }
+
+        .form,
+        .card,
+        .roadmap-card,
+        .achievement-card,
+        .contact-card {
+          overflow-wrap: anywhere;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .hero__stats {
+          grid-template-columns: 1fr;
+        }
+
+        .stat,
+        .summary-card,
+        .service-card,
+        .roadmap-card,
+        .achievement-card,
+        .contact-info__item {
+          width: 100%;
+        }
+
+        .section-header {
+          margin-bottom: var(--space-xl);
+        }
+
+        .gh-repo-tags,
+        .project-card__tags {
+          gap: .5rem;
+        }
+
+        .gh-tag,
+        .tag {
+          max-width: 100%;
+          white-space: normal;
+        }
+
+        .footer__socials {
+          flex-wrap: wrap;
+        }
+
+        .to-top {
+          right: .75rem;
+          bottom: .75rem;
+        }
+      }
     }
   </style>
 </head>
