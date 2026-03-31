@@ -870,7 +870,9 @@
 
       .section-header__description {
         font-size: var(--text-lg);
-        color: rgb(var(--gray-600))
+        color: rgb(var(--gray-600));
+        max-width: 60ch;
+        margin-inline: auto;
       }
 
       /* ===== GitHub-like Repos ===== */
@@ -900,6 +902,10 @@
         align-items: center;
         gap: .5rem;
         margin-bottom: .25rem
+      }
+
+      .gh-repo-name a {
+        overflow-wrap: anywhere;
       }
 
       .gh-repo-icon {
@@ -1116,6 +1122,11 @@
         display: flex;
         flex-wrap: wrap;
         gap: var(--space-sm)
+      }
+
+      .section-headertitle,
+      .section-headerdescription {
+        all: unset;
       }
 
       .tag {
@@ -2190,13 +2201,13 @@
     <header class="section-header fade-in">
       <h2 class="section-header__title" id="spaces-title">Explore My Spaces</h2>
       <p class="section-header__description">
-        Explore my specialized websites - Data & AI, Cybersecurity, and Freelance portfolios.
+        Explore my specialized websites — Data & AI, Cybersecurity, and Freelance portfolios.
       </p>
     </header>
     <div style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center;">
-      <a href="https://linford-musiyambodza.vercel.app/" class="btn btn--primary" target="_blank" style="min-width: 180px; margin: 0.5rem;">Main Portfolio</a>
-      <a href="https://linford-freelancer.netlify.app/" class="btn btn--secondary" target="_blank" style="min-width: 180px; margin: 0.5rem;">Freelance Portfolio</a>
-      <a href="https://linford-cyber.netlify.app/" class="btn btn--secondary" target="_blank" style="min-width: 180px; margin: 0.5rem;">Cybersecurity Portfolio</a>
+      <a href="https://linford-musiyambodza.vercel.app/" class="btn btn--primary" target="_blank" rel="noopener noreferrer" style="min-width: 180px; margin: 0.5rem;">Main Portfolio</a>
+      <a href="https://linford-freelancer.netlify.app/" class="btn btn--secondary" target="_blank" rel="noopener noreferrer" style="min-width: 180px; margin: 0.5rem;">Freelance Portfolio</a>
+      <a href="https://linford-cyber.netlify.app/" class="btn btn--secondary" target="_blank" rel="noopener noreferrer" style="min-width: 180px; margin: 0.5rem;">Cybersecurity Portfolio</a>
       <!-- Add more links as needed -->
     </div>
   </div>
@@ -2351,7 +2362,7 @@
 
             <div class="gh-repo-tags">
               <span class="gh-tag">Devpost Hackathon Project</span>
-              <span class="gh-tag">TyoeScript</span>
+              <span class="gh-tag">TypeScript</span>
               <span class="gh-tag">CSS</span>
               <span class="gh-tag">Bootstrap</span>
               <span class="gh-tag">PLpgSQL</span>
@@ -2359,7 +2370,7 @@
             </div>
 
             <div class="gh-repo-meta">
-              <span class="gh-meta-item"><span class="gh-language-dot" data-lang="Python"></span> TypeScript</span>
+              <span class="gh-meta-item"><span class="gh-language-dot" data-lang="TypeScript"></span> TypeScript</span>
               <span class="gh-meta-item">
                 <svg aria-hidden="true" viewBox="0 0 16 16" width="16" height="16" class="gh-meta-icon">
                   <path fill-rule="evenodd"
@@ -2472,7 +2483,7 @@
                 <div class="achievement-card__year">Ongoing</div>
               </div>
             </div>
-            <p class="achievement-card__description">Provided IT consulting, web development & cybersecurity support for
+            <p class="achievement-card__description">Provided IT consulting, web development, and cybersecurity support for
               businesses in South Africa.</p>
             <a href="https://www.linkedin.com/company/linfy-tech-solutions" target="_blank" rel="noopener noreferrer"
               class="btn btn--secondary btn--small achievement-card__cta">View Company</a>
@@ -2639,7 +2650,7 @@
       <p class="footer__description">Data Analyst, Cybersecurity Enthusiast, and Founder dedicated to using technology
         for positive impact.</p>
       <div class="footer__socials">
-        <a href="https://www.linkedin.com/in/" target="_blank" rel="noopener noreferrer" class="social-link"
+        <a href="https://www.linkedin.com/in/linfordlee14" target="_blank" rel="noopener noreferrer" class="social-link"
           aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
         <a href="https://github.com/linfordlee14" target="_blank" rel="noopener noreferrer" class="social-link"
           aria-label="GitHub"><i class="fab fa-github"></i></a>
