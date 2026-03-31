@@ -4,9 +4,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Linford Musiyambodza | Data Analyst • Cybersecurity Enthusiast • Founder</title>
+  <title>Linford Musiyambodza | Founder, Data Analyst & Cybersecurity Enthusiast</title>
   <meta name="description"
-    content="Portfolio of Linford Musiyambodza, a Data Analyst, Cybersecurity Enthusiast, and Founder using technology, data, and AI to build solutions for businesses and global challenges." />
+    content="Official portfolio of Linford Musiyambodza — Founder of Linfy Tech Solutions, Data Analyst, and Cybersecurity Enthusiast building technology, AI, and data-driven solutions for business and social impact." />
+  <meta name="keywords" content="Linford Musiyambodza, Linfy Tech Solutions, founder, data analyst, cybersecurity enthusiast, portfolio, South Africa, AI, data analytics, web development" />
+  <meta name="author" content="Linford Musiyambodza" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://linford.linfytech.xyz/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Linford Musiyambodza" />
+  <meta property="og:title" content="Linford Musiyambodza | Founder, Data Analyst & Cybersecurity Enthusiast" />
+  <meta property="og:description" content="Founder of Linfy Tech Solutions, Data Analyst, and Cybersecurity Enthusiast building practical solutions with technology, data, and AI." />
+  <meta property="og:url" content="https://linford.linfytech.xyz/" />
+  <meta property="og:image" content="https://linford.linfytech.xyz/founder.jpg" />
+  <meta property="og:image:alt" content="Portrait of Linford Musiyambodza" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Linford Musiyambodza | Founder, Data Analyst & Cybersecurity Enthusiast" />
+  <meta name="twitter:description" content="Founder of Linfy Tech Solutions, Data Analyst, and Cybersecurity Enthusiast building practical solutions with technology, data, and AI." />
+  <meta name="twitter:image" content="https://linford.linfytech.xyz/founder.jpg" />
   <meta name="color-scheme" content="light dark" />
   <link rel="icon"
     href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
@@ -34,6 +49,25 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Linford Musiyambodza",
+      "url": "https://linford.linfytech.xyz/",
+      "image": "https://linford.linfytech.xyz/founder.jpg",
+      "jobTitle": "Founder, Data Analyst, Cybersecurity Enthusiast",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Linfy Tech Solutions"
+      },
+      "sameAs": [
+        "https://github.com/linfordlee14",
+        "https://www.linkedin.com/in/linfordlee14"
+      ]
+    }
+  </script>
 
   <style>
     /* ====================== CASCADE LAYERS ====================== */
@@ -281,6 +315,12 @@
         --_padding: clamp(1.5rem, 5vw, 2rem);
         width: min(100% - var(--_padding)*2, var(--container-max-width));
         margin-inline: auto
+      }
+
+      @media (min-width: 1100px) {
+        .container {
+          --_padding: 2.5rem;
+        }
       }
 
       .section {
@@ -644,6 +684,12 @@
         align-items: center
       }
 
+      @media (min-width: 1100px) {
+        .hero__grid {
+          gap: 5rem;
+        }
+      }
+
       .hero__content {
         text-align: center
       }
@@ -801,6 +847,12 @@
         margin-inline: auto
       }
 
+      @media (min-width: 1100px) {
+        .section-header {
+          margin-bottom: 4.5rem;
+        }
+      }
+
       .section-header__badge {
         display: inline-block;
         padding: var(--space-xs) var(--space-md);
@@ -829,8 +881,14 @@
       }
 
       .gh-repo-item {
-        padding: 1rem 0;
+        padding: 1.15rem 0;
         border-bottom: 1px solid #d0d7de
+      }
+
+      @media (min-width: 1100px) {
+        .gh-repo-item {
+          padding: 1.4rem 0;
+        }
       }
 
       .gh-repo-item:last-child {
@@ -1077,6 +1135,12 @@
         transition: box-shadow .3s cubic-bezier(.4, 0, .2, 1)
       }
 
+      @media (min-width: 1100px) {
+        .achievement-card {
+          padding: 1.75rem;
+        }
+      }
+
       .achievement-card:hover {
         box-shadow: 0 0 30px rgb(var(--color-accent)/.15), var(--shadow-xl)
       }
@@ -1126,6 +1190,12 @@
         display: grid;
         gap: var(--space-xl);
         grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr))
+      }
+
+      @media (min-width: 1100px) {
+        .roadmap-grid {
+          gap: 1.5rem;
+        }
       }
 
       .roadmap-card {
@@ -1255,6 +1325,12 @@
       .contact-grid {
         display: grid;
         gap: var(--space-2xl)
+      }
+
+      @media (min-width: 1100px) {
+        .contact-grid {
+          gap: 2.5rem;
+        }
       }
 
       @media (min-width:50em) {
@@ -2073,7 +2149,7 @@
 
           <div class="hero__visual fade-in" style="--i:1">
             <div class="hero__image-wrapper">
-              <img src="founder.jpg" alt="A professional headshot of Linford Musiyambodza." width="454" height="550"
+              <img src="founder.jpg" alt="Portrait of Linford Musiyambodza, Founder of Linfy Tech Solutions." width="454" height="550"
                 loading="eager">
             </div>
             <div class="hero__stats">
@@ -2112,8 +2188,8 @@
     <section class="section" id="spaces" aria-labelledby="spaces-title">
   <div class="container">
     <header class="section-header fade-in">
-      <h2 class="section-headertitle" id="spaces-title">Explore My Spaces</h2>
-      <p class="section-headerdescription">
+      <h2 class="section-header__title" id="spaces-title">Explore My Spaces</h2>
+      <p class="section-header__description">
         Explore my specialized websites - Data & AI, Cybersecurity, and Freelance portfolios.
       </p>
     </header>
